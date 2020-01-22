@@ -155,13 +155,13 @@ void elements, template element, raw text elements, escapable raw text elements,
 
 **block element**     
 : (부모 요소의 전체 공간) 전체 너비를 차지하는 엘리먼트    
-: 전체 너비를 차지하므로 새 줄에서 시작
-: 하위 요소로 블록 엘리먼트와 인라인 엘리먼트 포함  
+: 전체 너비를 차지하므로 새 줄에서 시작    
+: 하위 요소로 블록 엘리먼트와 인라인 엘리먼트 전부 포함 가능   
 
 
 **inline element**  
 : 라인에서 시작하여 콘텐츠만큼 너비를 차지하는 엘리먼트   
-: 하위 요소로 인라인 엘리먼트만 포함할 수 있음   
+: 하위 요소로 인라인 엘리먼트만 포함 가능   
 
 
 
