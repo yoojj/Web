@@ -11,11 +11,10 @@ allowpaymentrequest  |
 importance | 리소스 다운로드 우선 순위 명시
 loading    | 아이프레임 로드 방법 명시
 name       | 아이프레임 이름 지정
-referrerpolicy |    
+referrerpolicy | HTTP 리퍼러 정책 설정, [속성 값](../html-attribute.md#referrer-attributes)   
 sandbox    | 리소스에 대한 제한 설정  
 src        | 포함할 리소스 url
 srcdoc     | inline html 삽입
-referrerpolicy |
 width, height  | 너비 및 높이 지정
 
 
