@@ -1,11 +1,10 @@
 # video
 ≒ [audio](./audio.md)   
-: 동영상 삽입을 위한 엘리먼트   
+: 동영상 삽입을 위해 사용하는 태그      
 : video 태그를 브라우저에서 지원하지 않을 경우 플러그인 사용     
 
 
-**[모두를 위한 비디오 : 크록 케이먼]**  
-
+**[모두를 위한 비디오 : 크록 케이먼]**   
 http://camendesign.com/code/video_for_everybody     
 
 
@@ -22,7 +21,7 @@ controls | 비디오 제어를 위한 패널 표시
 crossorigin |
 loop     | 비디오 반복 재생 여부
 poster   | 비디오가 재생되지 않을때 표시되는 이미지
-preload  |
+preload  | 문서 로드시 비디오 파일도 함께 다운로드
 playsinline |
 muted    | 비디오 음소거 여부  
 src      | 비디오 경로
@@ -56,6 +55,16 @@ function supportsVideo(){
 
 
 
+## html5 video format
+
+포맷 | MIME 타입 | 특징
+---|---|---
+mp4  | video/mp4  | 대부분 브라우저에서 지원  
+ogg  | video/ogg  | IE 미지원, 사파리 미지원  
+webm | video/webm | 상위 버전 브라우저에서 지원  
+
+
+
 ## MSE API
 Media Source Extensions   
 : 적응 스트리밍을 위한 기능을 제공하는 API
@@ -69,11 +78,16 @@ const ms = new MediaSource();
 const url = window.URL.createObjectURL(ms);
 video.src = url;
 
-ms.addEventListener('sourceopen', function(e) {
-    ..
-}, false);
+const videoSourceBuffer = ms.addSourceBuffer('video/mp4; codecs="H.264" ');
 
-
-// 추가
+fetch('url').then( (res) => {
+    return res.arrayBuffer();
+}).then( (data) => {
+    videoSourceBuffer.appendBuffer(data);
+});
 </script>
 ```
+
+
+
+[top](#)
