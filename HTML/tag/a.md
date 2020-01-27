@@ -1,5 +1,5 @@
 # a
-: 하이퍼 링크를 정의하는 엘리먼트   
+: 하이퍼 링크를 정의하기 위한 태그    
 : 다른 url, 다른 문서, 문서 내 특정 위치, 이메일, 전화 등에 사용  
 
 
@@ -15,7 +15,7 @@ rel      | 현재 문서와 링크된 문서 사이의 연관 관계 명시, [�
 [media](#media)| 링크된 리소스의 최적화된 장치 명시, [속성 값](../html-attribute.md#media-attributes)
 type     | 링크된 리소스의 MIME 유형 명시
 
-! html5 기준 href 속성 필수 아님
+! html5 기준 href 속성 필수 아님   
 ! href 속성이 없으면 나머지 속성 사용 불가
 
 
@@ -104,3 +104,7 @@ type     | 링크된 리소스의 MIME 유형 명시
 <a href="" media="print and (resolution:250dpi)">print</a>
 <!-- 250dpi 해상도로 프린트 -->
 ```
+
+
+
+[top](#)
