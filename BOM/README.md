@@ -11,6 +11,7 @@ Browser Object Model
 - [window.history](./window-history.md)
 - [window.location](./window-location.md)
 - [window.frames](./window-frames.md)
+- [window.document](../DOM/)
 
 
 ```bash
@@ -26,3 +27,7 @@ Window
 │   └─ Web API   
 └─ native object       # JS Object
 ```
+
+
+
+[top](#)
