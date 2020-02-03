@@ -1,18 +1,18 @@
 # form
-: 사용자로부터 데이터를 받아 서버로 전달하기 위한 입력 양식 엘리먼트    
+: 사용자로부터 데이터를 받아 서버로 전달하기 위한 입력 양식 태그       
 : 하나 이상 입력 요소를 담고 있는 컨테이너
 
 
 **포함 요소**
 - fieldset
 - legend
-- [label](./output.md)
+- [label](./label.md)
 - [input](./input.md)
 - [output](./output.md)
 - [textarea](./textarea.md)
-- button
+- [button](./buttom.md)
 - [select](./select.md)
-- datalist
+- [datalist](./datalist.md)
 - [option](./option.md)
 - [optgroup](./option.md#optgroup)
 
@@ -21,11 +21,11 @@
 속성 | 설명
 ---|---
 accept-charset | 문자 인코딩 지정
-action         | 입력된 양식을 보낼 서버의 url
+action         | 입력된 양식을 보낼 서버의 url 지정
 autocomplete   | 양식 입력시 자동 완성 기능 사용 여부 지정
 enctype        | 리소스의 MIME 유형 명시, [속성 값](../html-attribute.md#media)
 method         | 입력된 양식을 제출하는 방법 지정
-name           | 식별을 위한 폼 이름 지정  
+name           | 식별을 위해 form 이름 지정  
 novalidate     | 입력된 데이터 유효성을 수행하지 않도록 지정
 target         | 데이터 전달 후 응답이 열릴 위치 지정, [속성 값](../html-attribute.md#target)
 
@@ -75,10 +75,7 @@ chrome://settings/autofill
 -->
 
 
-<form method="get"></form>
-<form method="post"></form>
-<!--
--->
+<form method="get | post"></form>
 
 
 
@@ -89,6 +86,23 @@ chrome://settings/autofill
 
 
 <form novalidate></form>
+```
+
+
+
+## aria
+
+```html
+<form>
+    <fieldset>
+        <legend>그룹 설명</legend>
+    </fieldset>
+</form>
+
+
+<div role="group" aria-labelledby="group-title">
+    <h1 id="group-title">그룹 설명</h1>
+</div>
 ```
 
 
