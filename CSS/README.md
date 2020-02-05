@@ -1,18 +1,36 @@
 # CSS
 Cascading Style Sheets  
-: 마크업 언어 기반 문서의 요소 표현 제어를 위한 언어        
-: 특정 요소를 선택해 속성을 부여하여 시각적 효과 부여   
+: 마크업 언어 기반 문서의 요소 표현 제어를 위한 명령어 집합           
+: 특정 요소를 선택해 속성을 부여하여 시각적 효과 표현     
 
 
 - [CSS Level](#css-level)
-    [CSS module list](./module/)
+    -[CSS module list](./module/)
 - [Load CSS](./css-load.md)
     - [Load CSS Async](./css-load-async.md)
 - [CSS Methodologies](./css-methodologies.md)
 - [CSS in JS](./css-in-js.md)
-- [CSS Modules](./css-modules.md/)    
+- [CSS Module](./css-module.md/)    
 - [CSS Preprocessor](./css-preprocessor.md)
 - [CSS Framework](./css-framework.md)
+
+
+**구성 요소**   
+- 선택자
+- 선언 블록
+- 선언
+- 속성
+- 값
+
+
+```css
+@At-Rule
+
+/* comment */
+selector {property:value;}
+selector {property:value;property:value;}
+selector, selector {property:value;}
+```
 
 
 
