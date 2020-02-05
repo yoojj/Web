@@ -4,9 +4,9 @@ https://www.w3.org/TR/selectors/
 
 
 **선택자 종류**   
-- simple selector
-- compound selector
-- complex selector
+- [simple selector](#simple-selector)
+- [compound selector](#compound-selector)
+- [complex selector](#complex-selector)
 
 
 **CSS Selector Priority-Specificity**   
@@ -17,7 +17,7 @@ https://www.w3.org/TR/selectors/
 ## simple selector
 
 종류 | 설명
----|---|---
+---|---
 type selector      | 타입 선택자
 universal selector | 전체 선택자
 attribute selector | 속성 선택자
@@ -63,7 +63,7 @@ pseudo-class selector  | 의사 선택자
 
 
 ## compound selector
-: 결합자combinator로 분리되지 않은 simple selector  
+: combinator로 분리되지 않은 simple selector  
 
 ```css
 *.class {}
@@ -72,7 +72,7 @@ pseudo-class selector  | 의사 선택자
 
 
 ## complex selector
-: 결합자combinator가 사용된 simple selector
+: combinator가 사용된 simple selector
 
 
 ### combinator
