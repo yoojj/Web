@@ -31,20 +31,14 @@ pseudo-class selector  | 의사 선택자
 ### pseudo class selector   
 : css3 부터 가상 클래스와 가상 엘리먼트 구분   
 
-- [pseudo-classes](#pseudoclasses)
-    - functional-pseudo-class
-- [pseudo-elements](#pseudoelements)
+의사 선택자 | 설명
+---|---
+pseudo-classes           | ex. :active, :visited
+functional-pseudo-class  | ex. :is(), :not()
+pseudo-elements          | 존재하지 않는 요소를 가상으로 생성하여 사용 ex. ::after, ::before
 
 
-#### pseudo-classes
-ex. :active, :visited
-
-
-**functional-pseudo-class**  
-ex. :is(), :not()
-
-
-**분류**  
+**pseudo-classes 분류**  
 - linguistic pseudo-classes
 - location pseudo-classes
 - user-action pseudo-classes
@@ -53,17 +47,6 @@ ex. :is(), :not()
 - grid-structural pseudo-classes
 - time-dimensional pseudo-classes
 - resource state pseudo-classes
-
-
-#### pseudo-elements  
-: 존재하지 않는 요소를 가상으로 생성하여 사용  
-
-ex.
-- ::after
-- ::before
-- ::first-letter
-- ::first-line
-- ...
 
 
 
