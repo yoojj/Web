@@ -31,15 +31,19 @@ pseudo-class selector  | 의사 선택자
 : css3 부터 가상 클래스와 가상 엘리먼트 구분   
 
 - [pseudo-classes](#pseudoclasses)
+    - functional-pseudo-class
 - [pseudo-elements](#pseudoelements)
 
 
 #### pseudo-classes
-: 선택한 요소에 클래스를 부여하지 않았어도 클래스를 부여한 것과 같은 효과
+: 선택한 요소에 클래스를 부여하지 않았어도 클래스를 부여한 것과 같은 효과   
+
 ex. :active, :visited
+
 
 **functional-pseudo-class**  
 ex. :is(), :not()
+
 
 **분류**  
 - linguistic pseudo-classes
