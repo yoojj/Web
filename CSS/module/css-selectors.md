@@ -4,17 +4,18 @@ https://www.w3.org/TR/selectors/
 
 
 **선택자 종류**   
-- [simple selector](#simple-selector)
-- [compound selector](#compound-selector)
-- [complex selector](#complex-selector)
-- [selector list](#selector-list)
+1. [simple selector](#1-simple-selector)
+2. [compound selector](#2-compound-selector)
+3. [complex selector](#3-complex-selector)
+4. [selector list](#4-selector-list)
+
 
 **CSS Selector Priority-Specificity**   
 : 선택자가 중첩될 경우 적용되는 선택자 우선 순위 규칙  
 
 
 
-## simple selector
+## 1. simple selector
 
 종류 | 설명
 ---|---
@@ -36,8 +37,6 @@ pseudo-class selector  | 의사 선택자
 
 
 #### pseudo-classes
-: 선택한 요소에 클래스를 부여하지 않았어도 클래스를 부여한 것과 같은 효과   
-
 ex. :active, :visited
 
 
@@ -64,12 +63,11 @@ ex.
 - ::before
 - ::first-letter
 - ::first-line
-- ::selection
-- ::backdrop
 - ...
 
 
-## compound selector
+
+## 2. compound selector
 : combinator로 분리되지 않은 두 개 이상의 simple selector    
 
 ```css
@@ -78,7 +76,7 @@ ex.
 
 
 
-## complex selector
+## 3. complex selector
 : combinator가 사용된 simple selector list  
 
 
@@ -94,7 +92,7 @@ column combinator              | 컬럼 결합자 | &#166;&#166;
 
 
 
-## selector list
+## 4. selector list
 : 콤마로 구분 된 선택자 목록   
 
 ```css
