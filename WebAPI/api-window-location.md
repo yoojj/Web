@@ -13,8 +13,8 @@ location.search    | url 쿼리 반환
 location.hash      | url 해시 반환  
 
 
-- location.assing()
-- location.replace()
+- [location.assing()](#locationassing)
+- [location.replace()](#locationreplace)
 - location.reload()
 
 
