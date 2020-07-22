@@ -1,13 +1,13 @@
 # Navigator API
 : 브라우저 정보와 운영체제 정보 제공
 
-- NavigatorID
-- NavigatorLanguage
-- NavigatorOnLine
-- NavigatorContentUtils
-- NavigatorCookies
-- NavigatorPlugins
-- NavigatorConcurrentHardware
+- [NavigatorID](#navigatorid)
+- [NavigatorLanguage](#navigatorlanguage)
+- [NavigatorOnLine](#navigator)
+- [NavigatorContentUtils](#navigatorcontentutils)
+- [NavigatorCookies](#navigatorcookies)
+- [NavigatorPlugins](#navigatorplugins)
+- [NavigatorConcurrentHardware](#navigatorconcurrenthardware)
 
 
 
@@ -35,10 +35,31 @@ navigator.systemLanguage | only ie
 
 
 
+## NavigatorOnLine
+
+
+
 ## NavigatorContentUtils
 
 - navigator.registerProtocolHandler(scheme, url)
 - navigator.unregisterProtocolHandler(scheme, url)
+
+
+
+## NavigatorCookies
+
+속성 | 설명
+---|---
+navigator.cookieEnabled  |
+
+
+
+## NavigatorPlugins
+
+
+
+## NavigatorConcurrentHardware
+
 
 
 
