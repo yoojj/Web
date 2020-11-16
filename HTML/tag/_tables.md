@@ -7,7 +7,7 @@ table    | 테이블 정의
 caption  | 테이블 설명
 colgroup | 열-컬럼 그룹 정의
 col      | 공통적인 열 정의
-thead    | 테이블 헤더 콘텐츠 그룹 정의
+thead    | 테이블 머리 콘텐츠 그룹 정의
 tbody    | 테이블 본문 콘텐츠 그룹 정의
 tfoot    | 테이블 바닥 콘텐츠 그룹 정의
 tr       | 테이블 행 정의
@@ -34,19 +34,18 @@ td {display:table-cell;}
 	<caption>테이블 설명</caption>
 
 	<colgroup>
+		<!-- 단일 태그 -->
 		<col span="2">
-        <col>
-        <!-- 단일 태그 -->
+		<col>
 	</colgroup>
 
 	<thead>
     <tr>
-		<tr></tr>
-        <tr></tr>
-        <tr></tr>
+		<th></th>
+		<th></th>
+		<th></th>
     </tr>
     </thead>
-    <!-- tbody, tfoot 태그가 사용되는 경우 종료 태그 생략 가능 -->
 
     <tbody>
     <tr>
@@ -67,8 +66,8 @@ td {display:table-cell;}
     </tr>
     </tbody>
 
-
-    <tfoot>
+	<!-- 데이터에 따라 접근성을 위해 tbody 요소 전에 위치할 수 있음 -->
+	<tfoot>
     <tr>
         <td></td>
         <td></td>
