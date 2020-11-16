@@ -68,12 +68,12 @@ td {display:table-cell;}
 
 	<!-- 데이터에 따라 접근성을 위해 tbody 요소 전에 위치할 수 있음 -->
 	<tfoot>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    </tfoot>
+	<tr>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	</tfoot>
 </table>
 ```
 
