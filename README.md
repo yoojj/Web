@@ -7,9 +7,12 @@ World Wide Web, WWW, W3
 
 > Memex -> Project Xanadu -> WWW
 
-**[정보 관리 제안서 : 팀 버너스 리]**  
+[정보 관리 제안서 : 팀 버너스 리]    
 https://www.w3.org/History/1989/proposal.html
 
+
+
+**웹 사이트 vs 웹 애플리케이션**
 
 웹 사이트 | 웹 애플리케이션
 ---|---
@@ -22,26 +25,23 @@ https://www.w3.org/History/1989/proposal.html
 - 표현
     - 구조 : [HTML](./HTML/)
     - 표현 : [CSS](./CSS/)
-    - 기능 : [ECMAScript](https://github.com/yoojj/ECMAScript), WebAssembly
-    - [Web API](./Web-API/)
+    - 기능 : [ECMAScript](https://github.com/yoojj/JS), [WebAssembly](./WebAssembly/)
+    - [Web API](./WebAPI/)
     - [Web Component](./web-component.md)
 - 표시 : [브라우저](./Browser/)
-    - [BOM](./BOM/)
     - [DOM](./DOM/)
-- 식별자 : [URI, URL, URN](./URI-URL-URN.md)  
 - 프로토콜 : [HTTP](./HTTP/)
-- 보안 : [SSL, TLS](./SSL-TLS.md)
-- [웹 서버](./Web-Server/)
-- [웹 서비스](./web-service.md)
-- [웹 성능 최적화](./web-optimization.md)
-- 웹 보안
+- [웹 서버](./WebServer/)
 - 웹 표준
-    - [W3C](./W3C-WHATWG.md#W3C), [WHATWG](./W3C-WHATWG.md#WHATWG)
-    - [WAI-ARIA](./WAI-ARIA.md)
-    - [WCAG](./WCAG.md)
+    - [W3C](./w3c-whatwg#w3c)
+    - [WHATWG](./w3c-whatwg#whatwg)
+    - [WAI-ARIA](./wai-aria.md)
+    - [WCAG](./wcag.md)
     - [국제화](./web-i18n.md)
-    - 비표준 : WICG (https://www.w3.org/community/wicg/)
+- [웹 보안](./WebSecurity/)
+- [웹 성능 최적화](./web-optimization.md)
 - 웹 검색 엔진
+
 
 
 웹 | 정의
