@@ -12,7 +12,7 @@
 
 
 **최초 브라우저**
-![최초 브라우저 이미지](https://www.w3.org/MarkUp/tims_editor){: width="50%"}
+![최초 브라우저 이미지](https://www.w3.org/MarkUp/tims_editor){: width="50%" height="50%"}
 
 
 
