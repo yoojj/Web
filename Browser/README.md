@@ -4,15 +4,15 @@
 
 
 **종류**   
-- [Text-base Browser](./Text-Browser.md)
-- [Headless Browser](./Headless-Browser.md)
-- [Mobile Browser](./Mobile-Browser.md)
-- Cross-platform Browser
+- [Text-base Browser](./browser-text-base.md)
+- [Headless Browser](./browser-headless.md)
+- [Mobile Browser](./browser-mobile.md)
+- [Cross-platform Browser](./browser-cross-platform.md)
 
 
 
 **최초 브라우저**
-![최초 브라우저 이미지](https://www.w3.org/MarkUp/tims_editor){: width="350"}
+![최초 브라우저 이미지](https://www.w3.org/MarkUp/tims_editor | width=500)
 
 
 
