@@ -1,5 +1,7 @@
 # HTTP Version
 
+- [HTTP/0.9](#http-0.9)
+- [HTTP/1.0](#http-1.0)
 - [HTTP/1.1](./http-v1-1.md)
 - [HTTP/2.0](./http-v2.md)
 - [HTTP/3.0](./http-v3.md)
@@ -14,7 +16,8 @@ HTTP/2.0  | 메시지 캡슐화
 HTTP/3.0  | UDP 기반 통신  
 
 
-**HTTP/0.9 (1990년~)**   
+
+## HTTP/0.9 (1990년~)
 : World Wide Web을 위해 설계된 새로운 프로토콜    
 : HTTP/1.0이 발표되면서 구분을 위해 0.9라는 버전을 붙임   
 
@@ -26,13 +29,14 @@ HTTP/3.0  | UDP 기반 통신
 - 문서 전송이 완료되면 연결 종료
 
 
-**HTTP/1.0 (1995년~)**   
+
+## HTTP/1.0 (1995년~)  
 : HTTP 프로토콜 개선을 위해 IETF내에 HTTP Working Group 설립    
 : HTTP WG에서 HTTP/1.0 문서 발표 [RFC1945](https://tools.ietf.org/html/rfc1945)  
 
 - HTTP 메소드 추가 (HEAD, POST)
-- HTTP 헤더를 지원해 메타 데이터를(HTTP 버전, 상태 코드, 콘텐츠 타입) 포함   
-- 콘텐츠 타입을 지정해 HTML 문서 외 리소스를(텍스트 파일, 이미지 등) 응답 객체로 지원  
+- HTTP 헤더를 지원해 메타 데이터를 포함 (HTTP 버전, 상태 코드, 콘텐츠 타입)   
+- 콘텐츠 타입을 지정해 HTML 문서 외 리소스를 응답 객체로 지원  
 
 ```bash
 # Request
