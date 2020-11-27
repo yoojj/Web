@@ -19,8 +19,9 @@ Document Type Declaration
 
 
 ## html5
-: DTD-less Doctype
+: DTD-less Doctype   
 : SGML 기반이 아니므로 DTD를 참조하지 않음   
+: 생략할 경우 브라우저에 따라 렌더링 모드가 달라지는 경우가 있을 수 있으므로 생략하지 않음  
 
 
 ```html
@@ -31,7 +32,7 @@ Document Type Declaration
 
 ## html4
 : Doctype Sniffing, Doctype Switching   
-: SGML 기반으로 DTD를 참조하므로 DTD 주소와 HTML 버전 명시    
+: SGML 기반으로 DTD를 참조하므로 DTD 식별자 명시 필수     
 
 
 **종류**  
