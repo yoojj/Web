@@ -5,8 +5,9 @@ Document Type Declaration
 : IE 경우 독타입을 선언하지 않으면 쿼크 모드로 렌더링    
 
 
-**쿼크 모드**  
-: IE 브라우저 경우 6,7,8,9 버전에서 IE 5.5 버전으로 호환하기 위한 모드  
+**quirks mode**    
+: IE 브라우저 경우 6,7,8,9 버전에서 IE5.5 버전으로 호환하기 위한 모드   
+&nbsp; (compatibility mode는 IE7 버전을 기반으로 렌더링)
 
 ```html
 <code>
@@ -18,7 +19,8 @@ Document Type Declaration
 
 
 ## html5
-: SGML 기반이 아니므로 DTD를 참조하지 않음 = DTD Less Doctype   
+: DTD-less Doctype
+: SGML 기반이 아니므로 DTD를 참조하지 않음   
 
 
 ```html
@@ -28,14 +30,14 @@ Document Type Declaration
 
 
 ## html4
-: SGML 기반으로 DTD를 참조하므로 DTD 주소 명시    
+: Doctype Sniffing, Doctype Switching   
+: SGML 기반으로 DTD를 참조하므로 DTD 주소와 HTML 버전 명시    
 
 
 **종류**  
 - 완전 표준 모드
 - 유사 표준 모드 : 표준 모드로 동작 + 몇몇의 호환 모드 지원
 - 엄격 모드
-- 호환 모드, 쿼크 모드
 
 
 ```html
