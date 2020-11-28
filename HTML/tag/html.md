@@ -1,38 +1,13 @@
 # html
-: 문서의 루트가 되는 엘리먼트  
-: 독타입을 제외한 모든 요소의 컨테이너   
+: 웹 문서의 루트가 되는 엘리먼트로 DTD를 제외한 모든 요소의 컨테이너   
 
 
 속성 | 설명
 ---|---
-manifest |
+manifest | 캐시 매니페스트 url 지정  
 
 
 ```html
-<html lang="ko">
-<html lang="ko-KR">
-<!--
-: 검색 엔진, 텍스트 리더기, 번역기 등을 위해 문서에 쓰인 언어 명시
-
-ko : 언어 코드 지정
-ko-KR : 언어 코드 + 국가 코드 지정
-
-언어 코드 리스트
-https://www.sitepoint.com/iso-2-letter-language-codes/
--->
-
-
-<html dir="rtl">
-<!--
-: 글자의 방향 지정
-: 전역 사용을 위해 html, body 요소에서 명시  
-
-- auto : 브라우저 설정 값에 따름
-- ltr : left to right
-- rtl :right to left
--->
-
-
 <html manifest="cache.manifest">
 <!--
 : 캐시 매니페스트
@@ -45,7 +20,6 @@ https://www.sitepoint.com/iso-2-letter-language-codes/
 <code>
 CACHE MANIFEST
 # 주석
-# version 20180101
 
 # 오프라인시 사용 가능 리소스
 CACHE:
@@ -96,7 +70,6 @@ FALLBACK
 : Modernizr 라이브러리에 의해 JS가 지원되는 환경이면 class="js"로 변경
 -->
 ```
-
 
 
 
