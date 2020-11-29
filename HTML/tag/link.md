@@ -1,5 +1,5 @@
 # link
-: 문서와 외부 리소스 연결하고 관계를 명시      
+: 웹 문서와 외부 리소스 연결하고 관계를 명시      
 
 
 **부모 요소**  
@@ -7,74 +7,73 @@
 - noscript
 
 
+속성 | 설명
+---|---
+href  | 하이퍼 링크나 링크될 리소스의 위치 명시
+type  | 링크될 리소스 타입 명시
+hreflang | 링크될 리소스의 언어 명시
+crossorigin | crossorigin 요청 처리 방식 지정
+integrity   |
+referrerpolicy |
+disabled    | 링크 비활성화 여부 지정  
+rel   | 웹 문서와 링크될 리소스 간의 관계 명시 [+ rel](../html-attribute-value.md)
+media | 리소스가 적용될 미디어 명시 [+ media](../html-attribute-value.md)
+as    | rel 값이 preload나 modulepreload인 경우 타입 명시  
+color | rel 값이 mask-icon인 경우 색상 명시  
+sizes | rel 값이 icon인 경우 아이콘 사이즈 명시
+imagesrcset | rel 값이 preload인 경우 사용할 이미지 명시   
+imagesizes  | rel 값이 preload인 경우 사용할 이미지 명시   
+
+
 ```html
-<link href="">
-<!-- 링크될 리소스 위치 명시 -->
+<!-- 전역 속성 -->
+<link itemprop="url" href="">
+<link itemprop="embedURL" href="">
 
-
-<link href="" type="">
-<link href="" as="">
-<!-- 링크될 리소스 타입 명시 -->
-
-
-<link href="" hreflang="">
-<!-- 링크될 리소스 언어 명시 -->
-
-
-<link href="" crossorigin>
-<!-- crossorigin 요청 처리 방식 지정 -->
-
-
-<link rel="" href="" type="">
-<!--
-: 문서와 링크될 리소스 간의 관계 명시
-
-- stylesheet
-- alternate
-- icon
-- preconnect
-- preload
-- prefetch
-- prerender
-- dns-prefetch
-- pingback
-- canonical
-- external
-- help
-- next
-- prev
-- search
-- bookmark
-- manifest
-- author
-- license
--->
 
 <link rel="stylesheet" href="example.css">
-<link rel="alternate stylesheet" href="basic.css" title="Basic">
-<!-- 대체 스타일 시트 -->
+
+
+<link rel="alternate stylesheet" href="basic.css" title="Basic Style">
+<!--
+: 대체 스타일 시트 정의
+: title 속성은 link 태그에 한해 의미 변경  
+-->
+
 
 <link rel="alternate" media="only screen and (width:640px)" href="http://m.example.com/">
 <link rel="alternate" hreflang="en" href="https://www.example.com/">
+
+
+<link rel="icon" type="image/png" href="avicon.png">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon-precomposed" href="favicon.ico" sizes="152x152">
 
 
 <link rel="preconnect" href="//example.com">
 <!-- DNS lookup, Redirection 등 커넥션 연결 -->
 
 
-<link rel="preload" href="" as="">
-<!-- 리소스 로드 우선 순위를 지정 -->
+<link rel="preload" href="example.css" as="style">
+<link rel="preload" href="font.woff" as="font">
+<!-- 리소스 로드 우선 순위 설정 -->
 
 
 <link rel="prefetch" href="" as="">
-<!-- 특정 리소스를 미리 로드해 캐시에 저장 -->
+<!--
+: 나중에 필요할 수 있는 리소스를 미리 로드하고 이를 캐시에 저장
+: meta 태그와 HTTP 헤더를 통해서도 설정 가능
+
+<meta http-equiv="link" content="리소스; rel=prefetch">
+Link: <리소스>; rel=prefetch
+-->
 
 
 <link rel="dns-prefetch" href="//example.com">
-<!--
-: preconnect 중 DNS lookup만 적용
-<meta http-equiv="x-dns-prefetch-control" content="on">
--->
+<!-- preconnect 중 DNS lookup만 적용 -->
+
+
+<link rel="prerender" href="">
 
 
 <link rel="manifest" href="example.manifest">
@@ -83,14 +82,13 @@
 
 <link rel="author" href="humans.txt">
 <!-- http://humanstxt.org/humans.txt -->
+
+<link rel="author license" href="/about">
 ```
 
 
-**프리 패치 & 프리 랜더링**   
-: 레이턴시 극복  
-: 링크될 리소스의 로드 속도를 빠르게 하기 위해 사용      
-: 프리 패치를 적용해도 브라우저가 상황에 따라 이를 무시할 수 있음  
-: 링크 프리패치 요청이 HTTP/2.0 에서는 효과가 거의 없음
+**+ Resource Hints**   
+https://github.com/yoojj/Web/blob/master/WebOptimization/resource-hints.md
 
 
 
