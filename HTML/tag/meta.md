@@ -1,10 +1,10 @@
 # meta
-: 문서에 대한 상세 정보 및 메타 데이터를 위한 엘리먼트   
+: 웹 문서에 대한 상세 정보 및 메타 데이터를 위한 엘리먼트   
 : SEO에 영향을 미침     
 
 
 **Metadata**   
-: 작성자, 문서 설명 등과 같은 추가 정보 모음     
+: 웹 문서에 대한 설명이나 작성자 등 추가 정보 모음     
 : 사용자보다 검색 엔진과 같은 기계를 위한 정보    
 
 
@@ -15,22 +15,70 @@
 속성 | 설명
 ---|---
 charset     | 문자 인코딩 지정
-content     | http-equiv와 name 속성 값
+content     | http-equiv와 name 속성 값 지정
 http-equiv  | HTTP 헤더 작동 방식 변경
+name        | 메타데이터 이름으로 charset, http-equiv, itemprop 속성과 중복 정의 불가  
 itemprop    | [마이크로 데이터](../html-microdata.md)를 위한 속성
-name        | 문서의 메타데이터 이름으로 charset, http-equiv, itemprop 속성과 중복 정의 불가  
 
 
 
 ```html
-<meta charset="UTF-8">
-<!-- 문서 인코딩 최상단에 정의 -->
+<meta charset="utf-8">
+<!-- 최상단에 정의 -->
 
 
 
-<meta http-equiv="Content-Security-Policy" content="지시문 옵션">
 <!--
-: 콘텐츠 보안 정책 정의 CSP (Content-Security-Policy)
+http-equiv
+- content-language
+- content-type
+- default-style
+- refresh
+- x-ua-compatible
+- content-security-policy
+-->
+
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<!-- charset 속성과 중복 정의하면 안됨 -->
+
+
+<meta http-equiv="default-style" content="pre-style">
+<!--
+: 우선 적용할 스타일 시트 지정  
+
+<link rel="stylesheet" href="example.css" title="pre-style">
+-->
+
+
+<meta http-equiv="refresh" content="1">
+<!--
+: content 값 마다 웹 문서 새로고침
+
+<meta http-equiv="refresh" content="2; URL=https://www.example.com">
+: content 값 이후 해당 경로로 이동
+-->
+
+
+<meta http-equiv="x-ua-compatible" content="">
+<!--
+: 렌더링 모드 지정
+: 레이아웃 엔진과 스크립트 엔진이 지정한 브라우저 버전으로 맞춰짐
+
+최신 표준 모드로 렌더링
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+
+최신 표준 모드로 렌더링 후에 크롬이 설치되어 있다면 크롬으로 렌더링
+<meta http-equiv="ua-compatible" content="ie=edge,chrome=1">
+
+쿼크 모드
+<meta http-equiv="x-ua-compatible" content="ie=5">
+-->
+
+
+<meta http-equiv="content-security-policy" content="지시문 옵션">
+<!--
+: 콘텐츠 보안 정책 정의
 : HTTP 헤더를 정의하여 로드될 리소스를 제어해 XSS 방지
 
 
@@ -67,115 +115,29 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Polic
 -->
 
 
-<meta http-equiv="refresh" content="1" >
-<!--
-: content 값 마다 문서 새로고침
-
-<meta http-equiv="refresh" content="2; URL=https://www.example.com">
-: content 값 이후 해당 경로로 이동
--->
-
-
-<meta http-equiv="x-ua-compatible" content="">
-<!--
-: 렌더링 모드 지정
-: 레이아웃 엔진과 스크립트 엔진이 지정한 브라우저 버전으로 맞춰짐
-
-최신 표준 모드로 렌더링
-<meta http-equiv="x-ua-compatible" content="ie=edge">
-
-최신 표준 모드로 렌더링 후에 크롬이 설치되어 있다면 크롬으로 렌더링
-<meta http-equiv="ua-compatible" content="ie=edge,chrome=1">
-
-쿼크 모드
-<meta http-equiv="x-ua-compatible" content="ie=5">
--->
-
-
-<meta http-equiv="Cache-Control" content="No-Cache">
-<meta http-equiv="Pragma" content="No-Cache">
-<!-- 캐시 관련 정의 -->
-
-<meta http-equiv="Expire" content="-1">
-<!-- 캐시 유효 기간 정의 -->
-
-
-<meta http-equiv="imagetoolbar" content="no">
-<!-- 이미지에 마우스 오버시 생기는 툴바 삭제 -->
-
-
-<meta name="robots" content="명령어">
-<!--
-: 모든 검색 엔진 로봇에게 문서 크롤링 방법 지시  
-
-
-명령어
-- index : 문서 색인, 기본 값
-- noindex
-- follow : 링크 follow, 기본 값
-- nofollow
-- none : noindex, nofollow
-- noodp
-- noarchive
-- nosnippet
-- notranslate
-- noimageindex
-
-
-특정 봇 선택
-<meta name="googlebot" content="">
-<meta name="bingbot" content="">
-<meta name="slurp" content="">
--->
-
-
-<meta name="revisit-after" content="1 days">
-<!-- 검색 봇 재방문 시간 정의 -->
-
-
-<meta name="google" content="nositelinkssearchbox">
-<!-- 구글 검색시 사이트 링크 검색창 표시 제어 -->
-
-<meta name="google" content="notranslate">
-<!-- 구글 번역 제어 -->
-
-<meta name="google-site-verification" content="verification_token">
-
-
-<meta name="audience" content="all">
-<!-- 검색 봇, 보호자 제어 소프트웨어를 위해 연령 제어 -->
-
 
 <meta name="application-name" content="">
-<!-- 문서에서 실행될 애플리케이션 이름 정의 -->
+<!--
+: 웹 애플리케이션 이름 정의
+: 웹 애플리케이션이 아닌 경우 정의하면 안됨
+-->
 
 <meta name="author" content="">
-<meta name="creator" content="">
-<meta name="publisher" content="">
-<!-- 문서 작성자 혹은 기관 입력 -->
+
+<meta name="description" content="150 이하 문자">
+<!--
+: 웹 문서에 대한 설명
+: 검색시 결과로 보여지거나 북마크시 설명으로 사용됨
+-->
 
 <meta name="generator" content="">
-<meta name="ProgId" content="">
-<!-- 문서 작성에 사용된 도구 입력 -->
 
-<meta name="classification" content="html">
-<meta name="page-type" content="">
-<!-- 문서 형식 정의 -->
-
-<meta name="keywords" content="">
-<!-- 문서와 관련된 키워드 입력, 여러개 입력시 콤마로 구분 -->
-
-<meta name="page-topic" content="">
-<!-- 문서 주제 -->
-
-<meta name="description" content="150 이하 문자로 문서 설명">
-<!-- 문서 설명 입력, 검색시 결과로 보여지거나 북마크시 설명으로 사용됨 -->
-
+<meta name="keywords" content="a,b,c,d,e">
+<!-- 웹 문서와 관련된 키워드 정의 -->
 
 <meta name="referrer" content="옵션">
 <!--
 : HTTP 리퍼러 제어
-
 
 옵션
 - no-referrer
@@ -207,12 +169,15 @@ document.getElementsByTagName('head')[0].appendChild(meta);
 -->
 
 
-<meta name="theme-color" content="red">
-<!-- 상단 컬러셋 변경 -->
-
+<meta name="theme-color" content="">
 <meta name="color-scheme" content="">
+<!-- 인터페이스 컬러 변경 -->
+```
 
 
+**meta extensions**
+
+```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!--
 : 모바일 화면 크기 제어
@@ -244,8 +209,45 @@ document.getElementsByTagName('head')[0].appendChild(meta);
 <!-- 윈도우 타일 아이콘 -->
 
 
-<meta itemprop="" content="">
-<!-- 마이크로 데이터 참고 -->
+<meta name="robots" content="명령어">
+<!--
+: 모든 검색 엔진 로봇에게 크롤링 방법 지시  
+
+
+명령어
+- index : 문서 색인, 기본 값
+- noindex
+- follow : 링크 follow, 기본 값
+- nofollow
+- none : noindex, nofollow
+- noodp
+- noarchive
+- nosnippet
+- notranslate
+- noimageindex
+
+
+특정 봇 선택
+<meta name="googlebot" content="">
+<meta name="bingbot" content="">
+<meta name="slurp" content="">
+-->
+
+
+<meta name="revisit-after" content="1 days">
+<!-- 검색 봇 재방문 시간 정의 -->
+
+<meta name="audience" content="all">
+<!-- 검색 봇, 보호자 제어 소프트웨어를 위해 연령 제어 -->
+
+
+<meta name="google" content="nositelinkssearchbox">
+<!-- 구글 검색시 사이트 링크 검색창 표시 제어 -->
+
+<meta name="google" content="notranslate">
+<!-- 구글 번역 제어 -->
+
+<meta name="google-site-verification" content="verification_token">
 
 
 <meta property="og:url" content="">
@@ -270,7 +272,7 @@ document.getElementsByTagName('head')[0].appendChild(meta);
 
 
 <meta property="fb:app_id" content="페이스북아이디">
-<!-- 페이스북 메타태그-->
+<!-- 페이스북 메타태그 -->
 
 
 <meta name="ICBM" content="latitude, longitude">
