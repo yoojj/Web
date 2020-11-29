@@ -14,16 +14,8 @@ referrerpolicy | HTTP 리퍼러 정책 설정
 
 
 **async & defer**    
-스크립트 엘리먼트는 HTML 파서의 동작을 중단하고 스크립트를 로드함 (blocking mode)  
+스크립트 엘리먼트는 HTML 파서의 동작을 중단하고 스크립트를 로드하는데 (blocking mode)  
 스크립트를 로드하는 동안 파싱이 중단되므로 이를 보완하기 위해 async와 defer 속성 지원         
-
-
-**module script**   
-: ES 모듈 시스템 지원
-: 모듈 스크립트에는 async 속성만 사용 가능 (기본으로 defer 속성을 적용한 것처럼 작동)       
-
-- module script : 비동기 방식    
-- classic script : 동기 방식      
 
 
 **Subresource Integrity**  
@@ -45,14 +37,18 @@ https://github.com/yoojj/Web/blob/master/WebSecurity/sri.md
 
 <!-- module script -->
 <script type="module">
-// this == undefined
+// ES 모듈 시스템 지원
+// 기본으로 defer 속성을 적용한 것처럼 작동
 // 기본으로 use strict 모드로 실행
+// this == undefined
 </script>
 
 
-<script type="module" src="example.js"></script>
-<script nomodule src="example.fallback.js" defer></script>
+<script type="module" src="example.js" async></script>
+<!-- 모듈 스크립트에는 async 속성만 사용 가능 -->
 
+<script nomodule src="example.fallback.js" defer></script>
+<!-- 모듈 스크립트를 지원하는 브라우저는 nomodule 속성을 무시함 -->
 
 
 <script type="text/vbscript"></script>
