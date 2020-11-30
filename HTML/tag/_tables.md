@@ -5,14 +5,14 @@
 ---|---  
 table    | 테이블 정의
 caption  | 테이블 설명
-colgroup | 열-컬럼 그룹 정의
-col      | 공통적인 열 정의
+colgroup | 열 그룹 정의
+col      | 열 속성 정의
 thead    | 테이블 머리 콘텐츠 그룹 정의
 tbody    | 테이블 본문 콘텐츠 그룹 정의
 tfoot    | 테이블 바닥 콘텐츠 그룹 정의
 tr       | 테이블 행 정의
 th       | 테이블 헤더 셀 정의
-td       | 테이블 셀 정의
+td       | 테이블 데이터 셀 정의
 
 
 ```html
@@ -34,7 +34,6 @@ td {display:table-cell;}
 	<caption>테이블 설명</caption>
 
 	<colgroup>
-		<!-- 단일 태그 -->
 		<col span="2">
 		<col>
 	</colgroup>
@@ -75,6 +74,59 @@ td {display:table-cell;}
 	</tr>
 	</tfoot>
 </table>
+
+
+<!-- 부득이 레이아웃을 목적으로 table 태그를 사용하는 경우 -->
+<table role="presentation">
+</table>
+```
+
+
+
+## th
+
+속성 | 설명
+---|---
+colspan | 셀이 확장 될 열 수
+rowspan | 셀이 확장 될 행 수
+headers | 셀과 연관된 헤더 셀 명시  
+scope   | 헤더 셀이 적용되는 셀 지정
+abbr    | 헤더 셀에 대한 설명
+
+
+```html
+<!-- 헤더 셀이 열에 적용 -->
+<tr>
+	<th scope="col">제목
+	<th scope="col">제목
+	<th scope="col">제목
+</tr>
+
+<tr>
+	<th colspan="3" scope="colgroup">제목
+</tr>
+```
+
+
+
+## td
+
+속성 | 설명
+---|---
+colspan | 셀이 확장 될 열 수
+rowspan | 셀이 확장 될 행 수
+headers | 셀과 연관된 헤더 셀 명시  
+
+
+```html
+<tr>
+	<th id="id1">
+	<th id="id2">
+</tr>
+<tr>
+	<!-- 데이터 셀과 헤더 셀이 1:1이 아닌 경우 사용 -->
+	<td colspan="2" headers="id1 id2">
+</tr>
 ```
 
 
