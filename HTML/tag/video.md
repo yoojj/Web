@@ -1,10 +1,8 @@
 # video
-≒ [audio](./audio.md)   
-: 동영상 삽입을 위해 사용하는 태그      
-: video 태그를 브라우저에서 지원하지 않을 경우 플러그인 사용     
+: 동영상 삽입을 위한 엘리먼트         
 
 
-**[모두를 위한 비디오 : 크록 케이먼]**   
+[모두를 위한 비디오 : 크록 케이먼]     
 http://camendesign.com/code/video_for_everybody     
 
 
@@ -15,37 +13,27 @@ http://camendesign.com/code/video_for_everybody
 
 속성 | 설명
 ---|---
-autoplay | 비디오 자동 재생 여부
-buffered |
-controls | 비디오 제어를 위한 패널 표시
-crossorigin |
-loop     | 비디오 반복 재생 여부
-poster   | 비디오가 재생되지 않을때 표시되는 이미지
-preload  | 문서 로드시 비디오 파일도 함께 다운로드
-playsinline |
-muted    | 비디오 음소거 여부  
-src      | 비디오 경로
+src      | 비디오 경로 지정  
+controls | 비디오 제어를 위한 패널 표시 여부 지정 (불리언 속성)
+autoplay | 비디오 자동 재생 여부 지정 (불리언 속성)
+loop     | 비디오 반복 재생 여부 지정 (불리언 속성)
+muted    | 비디오 음소거 여부 지정 (불리언 속성)
 width, height | 비디오 너비 및 높이 지정
-
+poster   | 비디오 재생전 표시할 이미지 지정  
+preload  | 비디오 리소스 로드에 대한 힌트 지정
+playsinline | (불리언 속성)
+crossorigin | crossorigin 요청 처리 방식 지정
 
 
 ```html
-<!-- 지원 여부 확인 -->
-<script>
-function supportsVideo(){
-    return !!document.createElement('video').canPlayType;
-}
-</script>
-
-
 <video src="경로/파일.확장자" controls>
     <p>Your browser does not support the <code>video</code> element.</p>
 </video>
 
 
-<!-- 모든 브라우저 지원시 source 태그 사용 -->
+<!-- 모든 브라우저 지원을 위해 source 태그 사용 -->
 <video controls>
-    <!-- tpye 명시는 선택 사항 -->
+    <!-- type 명시는 선택 사항 -->
     <source src="경로/파일.mp4" type="audio/mp4">
     <source src="경로/파일.webm" type="audio/webm">
     <source src="경로/파일.ogg" type="audio/ogg">
@@ -54,8 +42,7 @@ function supportsVideo(){
 ```
 
 
-
-## html5 video format
+**video format**  
 
 포맷 | MIME 타입 | 특징
 ---|---|---
@@ -64,29 +51,8 @@ ogg  | video/ogg  | IE 미지원, 사파리 미지원
 webm | video/webm | 상위 버전 브라우저에서 지원  
 
 
-
-## MSE API
-Media Source Extensions   
-: 적응 스트리밍을 위한 기능을 제공하는 API
-
-
-```html
-<script>
-const video = document.getElementById('video');
-const ms = new MediaSource();
-
-const url = window.URL.createObjectURL(ms);
-video.src = url;
-
-const videoSourceBuffer = ms.addSourceBuffer('video/mp4; codecs="H.264" ');
-
-fetch('url').then( (res) => {
-    return res.arrayBuffer();
-}).then( (data) => {
-    videoSourceBuffer.appendBuffer(data);
-});
-</script>
-```
+**Media Source API**    
+https://github.com/yoojj/Web/blob/master/WebAPI/api-media-source.md
 
 
 
