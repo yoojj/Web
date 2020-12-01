@@ -1,33 +1,38 @@
 # img
-: 이미지 리소스를 표현하기 위한 태그    
+: 이미지 리소스를 표현하기 위한 엘리먼트   
+: 이미지는 HTML과 CSS가 로드 된 후 적용   
 
 > 이미지 다운로드 > 디코딩 > 렌더링
 
 
 속성 | 설명
 ---|---
+src            | 이미지 경로 지정 (필수 속성)
+width, height  | 이미지 크기 지정  
 alt            | 이미지 대체 텍스트 지정  
-crossorigin    |
+srcset         | 디스플레이별 사용할 이미지 지정
+sizes          | 레이아웃별 이미지 크기 지정
 decoding       | 이미지 디코딩 프로세스 명시
-importance     | 이미지 다운로드 중요도 명시
-intrinsicsize  |
-ismap          |
-referrerpolicy | HTTP 리퍼러 정책 설정, [속성 값](../html-attribute.md#referrer-attributes)
-sizes          |
-src            | 이미지 경로
-srcset         |
-width, height  | 이미지 크기  
-usemap         |
+loading        | 이미지 로드 방법 명시
+ismap          | 서버측 이미지맵인지 여부 지정 (불리언 속성)
+usemap         | 이미지맵 이름
+crossorigin    | crossorigin 요청 처리 방식 지정
+referrerpolicy | HTTP 리퍼러 정책 설정
 
 
 
 ```html
 <style>
+/* img 태그는 인라인 요소이나 일반 인라인 요소와 다르게 너비와 높이를 갖음 */
 img {width:100px;height:100px;margin:100px;}
+
+
+img {
+    image-rendering:auto;
+    image-rendering:crisp-edges;
+    image-rendering:pixelated;
+}
 </style>
-<!--
-img 태그는 인라인 요소이나 일반 인라인 요소와 다르게 너비와 높이를 갖음  
--->
 
 
 <img src="" alt="이미지 설명">
@@ -50,9 +55,12 @@ img 태그는 인라인 요소이나 일반 인라인 요소와 다르게 너비
 -->
 
 
-<img src="" alt="" decoding="auto">
-<img src="" alt="" decoding="sync">
-<img src="" alt="" decoding="async">
+<img src="" alt=""
+     srcset="img-900.png 900w, img-600.png 600w"
+     sizes="(max-width: 660px) 600px, 900px">
+
+
+<img src="" alt="" decoding="auto | sync | async">
 <!--
 : decoding 속성을 사용하여 상황에 따라 동기나 비동기 적으로 이미지 디코딩
 
@@ -60,7 +68,22 @@ img 태그는 인라인 요소이나 일반 인라인 요소와 다르게 너비
 - sync : 이미지를 동기적으로 디코딩
 - async : 이미지를 비동기적으로 디코딩
 -->
+
+
+<img src="" alt="" loading="auto | lazy | eager">
+<!--
+- auto : 브라우저 기본 지연 동작
+- lazy : 이미지 로드 연기  
+- eager : 이미지 즉시 로드  
+-->
 ```
+
+
+**+ Lazy Loading Images**    
+https://github.com/yoojj/Web/blob/master/WebOptimization/lazy-load-images.md
+
+**+ Image Decoding**    
+https://github.com/yoojj/Web/blob/master/WebOptimization/image-decoding.md
 
 
 
