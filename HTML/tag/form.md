@@ -1,11 +1,10 @@
 # form
 : 사용자로부터 데이터를 받아 서버로 전달하기 위한 입력 양식 태그       
-: 하나 이상 입력 요소를 담고 있는 컨테이너
+: 하나 이상 입력 요소를 담고 있는 컨테이너 엘리먼트   
 
 
 **포함 요소**
 - fieldset
-- legend
 - [label](./label.md)
 - [input](./input.md)
 - [output](./output.md)
@@ -20,36 +19,33 @@
 
 속성 | 설명
 ---|---
+name           | 식별을 위해 form 이름 지정  
 accept-charset | 문자 인코딩 지정
 action         | 입력된 양식을 보낼 서버의 url 지정
 autocomplete   | 양식 입력시 자동 완성 기능 사용 여부 지정
-enctype        | 리소스의 MIME 유형 명시, [속성 값](../html-attribute.md#media)
+enctype        | 리소스의 MIME 유형 명시
 method         | 입력된 양식을 제출하는 방법 지정
-name           | 식별을 위해 form 이름 지정  
-novalidate     | 입력된 데이터 유효성을 수행하지 않도록 지정
-target         | 데이터 전달 후 응답이 열릴 위치 지정, [속성 값](../html-attribute.md#target)
-
+novalidate     | 입력된 데이터 유효성을 수행하지 않도록 지정 (불리언 속성)
+target         | 데이터 전달 후 응답이 열릴 위치 지정
 
 
 ```html
 <form>
-    <fieldset>
+    <fieldset name="이름 지정" form="연결할 폼 명시" disabled>
         <legend>그룹 설명</legend>
     </fieldset>
 </form>
 <!--
-양식이 많을 경우 fieldset 요소를 사용해 구분-그룹화  
+양식이 많을 경우 fieldset 태그를 사용해 양식을 그룹화함  
 -->
 
 
 <form accept-charset="UTF-8 ISO-8859-1 EUC-KR"></form>
 <!--
-: accept-charset 속성의 기본 값은 예약 문자열 UNKNOWN
 : 여러 인코딩을 정의할 경우 나열된 순서대로 사용  
 -->
 
 
-<form autocomplete="on"></form>
 <form autocomplete="off">
     <input type="text" name="user-name" autocomplete="on">
     <input type="text" name="credit-card">
@@ -62,6 +58,7 @@ target         | 데이터 전달 후 응답이 열릴 위치 지정, [속성 �
 
 
 chrome://settings/autofill
+https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofilling-form-controls:-the-autocomplete-attribute
 -->
 
 
@@ -75,14 +72,17 @@ chrome://settings/autofill
 -->
 
 
-<form method="get | post"></form>
-
-
+<form method="get | post | dialog"></form>
+<!--
+- get : HTTP GET 메소드 지정 (기본 값)
+- post : HTTP POST 메소드 지정
+- dialog : dialog 태그와 매핑할 경우 지정 
+-->
 
 <dialog open>
     <form method="dialog"></form>
 </dialog>
-<!-- 양식이 제출될 때 대화 상자 close -->
+<!-- 양식이 제출되면 dialog 태그가 닫힘 -->
 
 
 <form novalidate></form>
