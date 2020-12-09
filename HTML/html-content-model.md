@@ -48,13 +48,59 @@ https://html.spec.whatwg.org/#content-models
 ## Sectioning Content  
 : 웹 문서를 좀 더 명확하게 구조화하기 위해 아웃 라인을 정의하는 요소들  
 
-**아웃 라인**
-: 섹션 계층 구조
-
 - article
 - aside
 - nav
 - section
+
+
+**아웃 라인**  
+: 섹션 계층 구조   
+: 섹션 콘텐츠 내부에 존재하는 헤딩 요소가 암묵적 섹션을 형성       
+: html5 명세에서 아웃 라인 알고리즘 제공  
+
+https://h5o.github.io/  
+http://gsnedders.html5.org/outliner/  
+
+
+```html
+<body>
+    <h1>title</h1>
+
+    <nav>
+        <h2>title</h2>
+    </nav>
+
+    <section>
+        <h2>title</h2>
+
+        <article>
+            <h3>title</h3>
+        </article>
+    </section>
+</body>
+```
+
+
+**+ sectioning root**  
+: 섹셔닝 루트 요소 내부에 존재하는 섹셔닝 콘텐츠는 (body 제외) 아웃 라인에 영향을 미치지 않음
+
+- blockquote
+- body
+- details
+- fieldset
+- figure
+- td
+
+```html
+<body>
+    <h1>h1</h1>
+
+    <blockquote>
+        <h2>h2</h2>
+    </blockquote>
+</body>
+```
 
 
 
