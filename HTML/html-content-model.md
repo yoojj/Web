@@ -1,10 +1,9 @@
 # HTML Content Model
 https://html.spec.whatwg.org/#content-models  
 
-: html5부터 도입된 카테고리 개념에 따라 엘리먼트를 분류하는 방법          
+: (html5부터 도입된) 카테고리 개념에 따라 엘리먼트 분류               
 : 하나의 요소가 하나의 카테고리에 한정되지 않으며 카테고리에 속하지 않는 요소도 존재   
-
-! html4, xhtml에서 요소는 [블록 요소와 인라인 요소](./html-element.md#block-and-inline-element)로 분류  
+! html4에서는 [블록 요소와 인라인 요소](./html-element.md#block-and-inline-element)로 분류  
 
 
 **카테고리**  
@@ -19,7 +18,7 @@ https://html.spec.whatwg.org/#content-models
 
 
 ## Metadata Content  
-: 문서에 대한 정보 설정 및 문서와 문서의 관계를 정의하는 요소들    
+: 웹 문서에 대한 정보, 기능, 리소스와의 관계를 정의하는 요소들      
 
 - base
 - link
@@ -32,24 +31,22 @@ https://html.spec.whatwg.org/#content-models
 
 
 
-
 ## Flow content  
-: 콘텐츠를 포함하는 요소로 body 내의 대부분 요소들  
+: 웹 문서의 콘텐츠를 포함하는 요소들    
 
 - a
 - abbr
 - address
-- area -- map 요소의 자식일 경우
+- area
 - article
 - aside
 - audio
-- b
 - ...
 
 
 
 ## Sectioning Content  
-: 문서를 좀 더 명확하게 구조화하기 위해 범위-아웃 라인을 정의하는 요소들  
+: 웹 문서를 좀 더 명확하게 구조화하기 위해 아웃 라인을 정의하는 요소들  
 
 **아웃 라인**
 : 섹션 계층 구조
@@ -62,19 +59,19 @@ https://html.spec.whatwg.org/#content-models
 
 
 ## Heading Content  
-: 각 세션의 머리말-표제를 정의하는 요소들
+: 각 세션의 머리말를 정의하는 요소들
 
 - h1 ~ h6
-- hgroup(not w3)
+- hgroup
 
 
 
 ## Phrasing Content  
-: 텍스트를 정의하는 요소들
+: 텍스트를 포함하는 요소들
 
 - a
 - abbr
-- area -- map 요소의 자식일 경우
+- area
 - audio
 - b
 - ...
@@ -82,7 +79,7 @@ https://html.spec.whatwg.org/#content-models
 
 
 ## Embedded Content  
-: 미디어, 그래픽 등의 외부 자원-콘텐츠 삽입을 정의하는 요소들  
+: 미디어, 그래픽 등 외부 리소스 삽입을 위한 요소들  
 
 - audio
 - canvas
@@ -98,21 +95,21 @@ https://html.spec.whatwg.org/#content-models
 
 
 ## Interactive Content  
-: 사용자와 상호 작용을 위해 정의하는 요소들  
+: 사용자와 상호 작용을 위한 요소들  
 
-- a -- href 속성이 존재하는 경우
-- audio -- controls 속성이 존재하는 경우
+- a (href 속성이 존재하는 경우)
+- audio (controls 속성이 존재하는 경우)
 - button
 - details
 - embed
 - iframe
-- img -- usemap 속성이 존재하는 경우
-- input -- type 속성에서 hidden 값이 아닌 경우
+- img (usemap 속성이 존재하는 경우)
+- input (type 속성의 값이 hidden이 아닌 경우)
 - label
-- object -- usemap 속성이 존재하는 경우
+- object (usemap 속성이 존재하는 경우)
 - select
 - textarea
-- video -- controls 속성이 존재하는 경우
+- video (controls 속성이 존재하는 경우)
 
 
 
