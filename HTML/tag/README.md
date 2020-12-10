@@ -11,7 +11,7 @@ aside       | new html5 | | HTMLElement
 audio       | new html5 | | HTMLAudioElement
 b           | | Bold      | HTMLElement
 base        | | | HTMLBaseElement
-bdi         | new html5 | | HTMLElement
+bdi         | new html5 | Bidirectional Isolate | HTMLElement
 bdo         | | Bidirectional Overriding | HTMLElement
 blockquote  | | | HTMLQuoteElement
 body        | | | HTMLBodyElement
@@ -106,11 +106,16 @@ time        | new html5 | | HTMLTimeElement
 title       | | | HTMLTitleElement
 tr          | | Table Row | HTMLTableRowElement
 track       | new html5 | | HTMLTrackElement
-u           | | Underline | HTMLElement
+u           | html4 | Underline | HTMLElement
+u           | html5 | Unarticulated | HTMLElement
 ul          | | Unordered List | HTMLUListElement
 var         | | Variable  | HTMLElement
 video       | new html5 | | HTMLVideoElement
 wbr         | new html5 | Word Break Opportunitys | HTMLElement
+
+
+**비표준**   
+- portal
 
 
 
