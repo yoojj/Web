@@ -1,56 +1,30 @@
-# CSS File Load
-: 문서에 css 파일을 포함하는 방법
-
-- User defined CSS
-- External CSS
-- Internal CSS
-- Inline CSS
+# CSS Load
 
 
-```html
-<!--
-1. User defined Style Sheet
-: 브라우저에서 제공하는 기본 스타일 시트(user agent stylesheet)를 사용자가 수정 가능한 경우
--->
+**종류**
+- [User-defined CSS](#user-defined-css)
+- [External CSS](#external-css)
+- [Internal CSS](#internal-css)
+- [Inline CSS](#inline-css)
 
 
 
-<head>
-<link rel="stylesheet" href="base.css" media="all">
-<link rel="stylesheet" href="small.css" media="(min-width:50em)">
-<link rel="stylesheet" href="medium.css" media="(min-width:100em)">
-<link rel="stylesheet" href="large.css" media="(min-width:150em)">
-</head>
+## User-defined CSS
+: 브라우저에서 제공하는 기본 스타일 시트(user agent stylesheet)를 사용자가 수정하거나   
+&nbsp; 사용자가 정의한 CSS 파일을 브라우저의 기본 스타일 시트로 등록  
 
-<link rel="stylesheet" href="home-header.css">
-<header class="home-header"></header>
-<!--
-2. External Style Sheet
-: 외부에 생성된 css 파일을 링크   
-: css 파일 안에서 @import 구문을 사용하여 css 파일을 포함할 수 있음
 
-@import url ("*.css");
+**firefox**
+1. 주소창 about:config 입력
+2. 검색창에 toolkit.legacyUserProfileCustomizations.stylesheets 검색하고 활성화
 
-link된 css 파일은 동시에 다운로드가 가능하여 문제가 없으나
-import된 css 파일은 순차적으로 다운로드되어 문제가 생길 수 있으므로 사용 지양
--->
+
+**chrome**
+: stylish 확장 프로그램 설치
 
 
 
-<style>
-div {background-color:#000;}
-</style>
-<!-- 3. Internal(Embedded) Style Sheet -->
-
-
-
-<div style="background-color:black;"></div>
-<!-- 4. Inline Styles -->
-```
-
-
-
-## Browser default CSS
+### Browser default CSS
 
 **ie 7,8,9**   
 http://web.archive.org/web/20170122223926/http://www.iecss.com/
@@ -67,6 +41,46 @@ http://trac.webkit.org/browser/trunk/Source/WebCore/css/html.css
 
 **Firefox**    
 https://dxr.mozilla.org/mozilla-central/source/layout/style/res/html.css
+
+
+
+## External CSS
+
+```html
+<head>
+<link rel="stylesheet" href="base.css" media="all">
+<link rel="stylesheet" href="small.css" media="(min-width:50em)">
+<link rel="stylesheet" href="medium.css" media="(min-width:100em)">
+<link rel="stylesheet" href="large.css" media="(min-width:150em)">
+</head>
+
+<link rel="stylesheet" href="home-header.css">
+<header class="home-header"></header>
+```
+
+
+
+## Internal CSS
+= Embedded CSS
+
+```html
+<style>
+div {}
+</style>
+
+<div></div>
+```
+
+
+
+## Inline CSS
+: 웹 문서의 요소에 직접 스타일 속성 지정     
+: 외부 스타일 시트보다 우선 순위가 높음   
+: 인라인으로 스타일 지정시 가상 클래스와 가상 엘리먼트 사용 불가   
+
+```html
+<div style=""></div>
+```
 
 
 
