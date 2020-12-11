@@ -1,9 +1,10 @@
 # CSS Selectors   
 
-https://www.w3.org/TR/selectors/   
+https://www.w3.org/TR/selectors/     
+https://drafts.csswg.org/selectors/
 
 
-**선택자 종류**   
+**종류**   
 1. [simple selector](#1-simple-selector)
 2. [compound selector](#2-compound-selector)
 3. [complex selector](#3-complex-selector)
@@ -33,9 +34,9 @@ pseudo-class selector  | 의사 선택자
 
 의사 선택자 | 설명
 ---|---
-pseudo-classes           | ex. :active, :visited
+pseudo-classes           | ex. :hover, :focus, :active
 functional-pseudo-class  | ex. :is(), :not()
-pseudo-elements          | 존재하지 않는 요소를 가상으로 생성하여 사용 ex. ::after, ::before
+pseudo-elements          | ex. ::before, ::after
 
 
 **pseudo-classes 분류**  
@@ -47,6 +48,11 @@ pseudo-elements          | 존재하지 않는 요소를 가상으로 생성하�
 - grid-structural pseudo-classes
 - time-dimensional pseudo-classes
 - resource state pseudo-classes
+
+
+**pseudo-elements**  
+: 존재하지 않는 요소를 가상으로 생성해 사용  
+: 구분하기 위해 더블 콜론을 사용하나 브라우저에서 싱글 콜론도 지원   
 
 
 
@@ -63,7 +69,7 @@ pseudo-elements          | 존재하지 않는 요소를 가상으로 생성하�
 : combinator가 사용된 simple selector list  
 
 
-### combinator
+**combinator**
 
 결합자 | 설명 | 기호
 ---|---|---
