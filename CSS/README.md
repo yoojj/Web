@@ -1,30 +1,33 @@
 # CSS
 Cascading Style Sheets  
-: 마크업 언어 기반 문서의 요소 표현 제어를 위한 명령어 집합           
-: 특정 요소를 선택해 속성을 부여하여 시각적 효과 표현     
+: 마크업 언어로 작성된 요소에 시각적 표현을 적용하기 위한 명령어 집합           
+: 특정 요소를 선택하고 속성 지정       
 
 
 - [CSS Level](#css-level)
-    -[CSS module list](./module/)
-- [Load CSS](./css-load.md)
+    - [CSS module list](./module/)
+- [CSS Load](./css-load.md)
     - [Load CSS Async](./css-load-async.md)
 - [CSS Methodologies](./css-methodologies.md)
 - [CSS in JS](./css-in-js.md)
 - [CSS Module](./css-module.md/)    
 - [CSS Preprocessor](./css-preprocessor.md)
 - [CSS Framework](./css-framework.md)
+- CSS Performance
+    - [CSS GPU Accelerated](./css-gpu.md)
+- CSS Optimization
 
 
 **구성 요소**   
 - 선택자
 - 선언 블록
-- 선언
-- 속성
-- 값
+- 선언문
+    - 속성
+    - 속성 값
 
 
 ```css
-@At-Rule
+@At-Rule;
 
 /* comment */
 selector {property:value;}
@@ -37,7 +40,7 @@ selector, selector {property:value;}
 ## CSS level
 : CSS는 버전이 존재하지 않고 레벨이 존재   
 : CSS2 이후 빠른 표준화 진행과 브라우저 지원을 위해 CSS 사양을 모듈화하여 개별 정의      
-: CSS3은 모듈화된 CSS를 지칭하고 모듈은 각각 업데이트하므로 CSS4 레벨은 존재하지 않음   
+: CSS3은 모듈화된 CSS를 지칭하고 모듈은 각각 업데이트되므로 CSS4 레벨은 존재하지 않음   
 
 
 레벨 | 특징 | 스펙
