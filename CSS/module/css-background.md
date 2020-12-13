@@ -1,47 +1,55 @@
-# CSS Backgrounds & Borders
+# CSS Background & Border
+
 https://www.w3.org/TR/css-backgrounds/
 
 
-- [background](#background)
-- [border](#border)
+**background**   
+: 박스는 투명하거나 색으로 채워지거나 하나 이상의 이미지로 채워짐     
+: background 속성을 통해 박스를 채울 색상이나 이미지 지정   
+
+
+**border**   
+: 박스의 경계선-테두리의 스타일과 색 등 지정   
 
 
 속성 | 설명
 ---|---
-box-shadow  | 상자에 그림자 효과 지정  
-
-
-
-## background  
-: 박스의 색이나 하나 이상의 이미지 지정   
-
-
-속성 | 설명
----|---
+background            | background-* 속성 축약
 background-color      | 배경 색 지정
 background-image      | 배경 이미지 지정
-background-repeat     | 배경 이미지의 반복 여부 지정
-background-attachment | 배경 이미지의 스크롤 여부 지정
-background-position   | 배경 이미지의 위치 지정
-background-clip       | 배경 이미지를 테두리나 여백까지 채우기 위해 지정
+background-repeat     | 배경 이미지 반복 방법 지정
+background-attachment | 배경 이미지 스크롤 방법 지정
+background-position   | 배경 이미지 위치 지정
+background-clip       | 배경 이미지를 테두리나 여백까지 채우기 위한 방법 지정
 background-origin     | 배경 이미지를 박스에 채우기 위한 위치 지정
 background-size       | 배경 이미지 크기 지정
+border          | border의 color, style, width 축약
+border-*-color  | 보더 색 지정
+border-*-style  | 보더 스타일 지정
+border-*-width  | 보더 두께 지정
+border-radius   | border-radius 축약
+border-*-radius | 보더의 모서리를 둥근 모서리로 지정
+border-image        | border-image-* 축약
+border-image-source | 보더에 적용할 이미지 지정
+border-image-slice  | 보더 이미지를 9개 영역으로 잘라 이를 표현하는 방법 지정
+border-image-width  | 보더 이미지 너비 지정   
+border-image-outset | 보더와 보더 이미지의 거리 지정  
+border-image-repeat | 보더 이미지의 크기 조정 방법 지정
+box-shadow	        | 박스에 그림자 효과 지정
 
 
 ```css
-* {background:color url() top left repeat border-box;}
+E {background-color:transparent | color;}
 
 
-* {background-color:transparent | color;}
+E {background-image:img | none;}
+/* 색과 이미지 둘 다 적용하면 색 위에 이미지가 그려짐 */
 
 
-* {background-image:url('');}
-
-
-* {background-repeat:repeat | repeat-x | repeat-y | space | round | no-repeat;}
+E {background-repeat:repeat | repeat-x | repeat-y | space | round | no-repeat;}
 /*
 - repeat
-: 이미지를 반복하여 박스 영역 전체를 채우며 이미지가 넘칠 경우 짤림  
+: 이미지를 반복해서 박스 영역 전체를 채우며 이미지가 넘칠 경우 짤림  
 
 - space
 : 이미지가 넘치지 않게 박스 영역 전체를 채움  
@@ -54,7 +62,7 @@ background-size       | 배경 이미지 크기 지정
 */
 
 
-* {background-attachment:scroll | fixed | local;}
+E {background-attachment:scroll | fixed | local;}
 /*
 - scroll : 박스 영역에서 배경 이미지 고정
 - fixed : 뷰포트에서 배경 이미지 고정
@@ -62,83 +70,45 @@ background-size       | 배경 이미지 크기 지정
 */
 
 
-* {background-position:left | center | right | top | bottom;}
-* {background-position:length | percentage;}
-
-* {background-position:left top;}
-/* 수치가 없으면 기본 값은 0 */
-
-* {background-position:10px 10px;}
-/* 두 개의 값을 지정할 경우 처음은 가로 위치 나중은 세로 위치 */
+E {background-position:left | center | right | top | bottom | length;}
 
 
-* {background-clip:border-box | padding-box | content-box | text;}
+E {background-clip:border-box | padding-box | content-box;}
 /*
 : 이미지가 없을 경우 투명으로 영역이 채워짐
 
 - border-box : 테투리 영역까지 배경 이미지를 채움
 - padding-box : 여백 영역까지 배경 이미지를 채움
 - content-box : 컨텐츠 영역에 배경 이미지를 채움
-- text : 컨텐츠 영역의 텍스트에 배경 이미지를 채움  
 */
 
 
-* {background-origin: border-box | padding-box | content-box;}
+E {background-origin:border-box | padding-box | content-box;}
 
 
-* {background-size:length | percentage;}
+E {background-size:auto | cover | contain | length;}
 
 
-/* 배경 이미지 중첩 사용 */
-* {background-image:url(''), url(''), url('');}
-* {background-repeat:no-repeat, no-repeat, no-repeat;}
-* {background-position:top left, center bottom, 0% 100%;}
-```
+E {border:border-with border-style border-color;}
 
 
-
-## border
-: 박스의 경계선-테두리의 스타일과 색 등을 지정  
-
-\+ 외곽선
+E {border-color:color;}
 
 
-속성 | 설명
----|---
-border-*-color  | 테두리의 색 지정
-border-*-style  | 테두리의 스타일지정
-border-*-width  | 테두리의 두께 지정
-border-*-radius | 테두리의 모서리를 둥근 모서리로 지정
-border-image-source | 테두리에 사용할 이미지 지정
-border-image-slice  | 
-border-image-width  |
-border-image-outset |
-border-image-repeat |
+E {border-style:none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset;}
 
 
-```css
-* {border:1px solid red;}
-
-* {border-color:color;}
+E {border-width:thin | medium | thick | length;}
 
 
-* {border-style:none | hidden | dotted | dashed | solid | double | groove | ridge | inset | outset;}
+E {border-radius:length | percentage;}
 
 
-* {border-width:length | thin | medium | thick;}
+E {border-image-source:none | img;}
 
 
-* {border-radius:length | percentage;}
+E {border-image-slice:number | fill;}
 
-
-* {border-image:url('');}
-/*
-: 테두리의 두께와 스타일을 기반으로 이미지 표현
-: 이미지를 9개 구역으로 나누고 이를 제어  
-1 | 2 | 3
-4 | 5 | 6
-7 | 8 | 9  
-*/
 ```
 
 
