@@ -3,15 +3,6 @@
 https://www.w3.org/TR/css-backgrounds/
 
 
-**background**   
-: 박스는 투명하거나 색으로 채워지거나 하나 이상의 이미지로 채워짐     
-: background 속성을 통해 박스를 채울 색상이나 이미지 지정   
-
-
-**border**   
-: 박스의 경계선-테두리의 스타일과 색 등 지정   
-
-
 속성 | 설명
 ---|---
 background            | background-* 속성 축약
@@ -26,15 +17,15 @@ background-size       | 배경 이미지 크기 지정
 border          | border의 color, style, width 축약
 border-*-color  | 보더 색 지정
 border-*-style  | 보더 스타일 지정
-border-*-width  | 보더 두께 지정
+border-*-width  | 보더 굵기 지정
 border-radius   | border-radius 축약
 border-*-radius | 보더의 모서리를 둥근 모서리로 지정
 border-image        | border-image-* 축약
 border-image-source | 보더에 적용할 이미지 지정
-border-image-slice  | 보더 이미지를 9개 영역으로 잘라 이를 표현하는 방법 지정
+border-image-slice  | 보더 이미지를 자를 위치 지정
 border-image-width  | 보더 이미지 너비 지정   
-border-image-outset | 보더와 보더 이미지의 거리 지정  
-border-image-repeat | 보더 이미지의 크기 조정 방법 지정
+border-image-outset | 보더와 보더 이미지 사이의 거리 지정  
+border-image-repeat | 보더 이미지 반복 방법 지정
 box-shadow	        | 박스에 그림자 효과 지정
 
 
@@ -42,7 +33,7 @@ box-shadow	        | 박스에 그림자 효과 지정
 E {background-color:transparent | color;}
 
 
-E {background-image:img | none;}
+E {background-image:none | img;}
 /* 색과 이미지 둘 다 적용하면 색 위에 이미지가 그려짐 */
 
 
@@ -77,9 +68,9 @@ E {background-clip:border-box | padding-box | content-box;}
 /*
 : 이미지가 없을 경우 투명으로 영역이 채워짐
 
-- border-box : 테투리 영역까지 배경 이미지를 채움
-- padding-box : 여백 영역까지 배경 이미지를 채움
-- content-box : 컨텐츠 영역에 배경 이미지를 채움
+- border-box : 보더 영역까지 배경 이미지를 채움
+- padding-box : 패딩 영역까지 배경 이미지를 채움
+- content-box : 콘텐츠 영역에 배경 이미지를 채움
 */
 
 
@@ -87,7 +78,17 @@ E {background-origin:border-box | padding-box | content-box;}
 
 
 E {background-size:auto | cover | contain | length;}
+/*
+- cover
+: 이미지의 비율을 유지하며 박스를 채우도록 이미지 크기 변경
+: 이미지의 비율과 박스의 비율이 다르면 이미지가 짤림
 
+- contain
+: 이미지의 비율을 유지하며 박스 크기에 맞게 이미지 크기 변경
+: 이미지의 비율과 박스의 비율이 다르면 박스에 여백이 생김
+
+E {background-size:50% auto;}
+*/
 
 E {border:border-with border-style border-color;}
 
@@ -102,13 +103,59 @@ E {border-width:thin | medium | thick | length;}
 
 
 E {border-radius:length | percentage;}
+/*
+: 모서리의 수평 반지름과 수직 반지름에 의해 둥근 정도 표현
+
+border-radius:top-left top-right bottom-right bottom-left
+border-radius:top-left top-right/bottom-left bottom-right
+border-radius:top-left/bottom-right top-right/bottom-right
+
+E {border-radius:0 0 0 0;}
+E {border-radius:0 0 0;}
+E {border-radius:0 0;}
+
+E {border-top-left-radius:0 0;타원형 모서리}
+*/
 
 
 E {border-image-source:none | img;}
 
 
 E {border-image-slice:number | fill;}
+/*
+: 슬라이스 수치를 기준으로 보더 이미지를 9개 영역으로 나눔
+  (4개 모서리 + 4개 변 + 1개 중앙 영역)
+: fill 값을 사용하면 중앙 영역도 보더 이미지로 채워짐
 
+1 5 2
+8 9 6
+4 7 3
+
+border-image-slice:top right bottom left;
+E {border-image-slice:0 0 0 0;}
+*/
+
+
+E {border-image-outset:number | length;}
+
+
+E {border-image-repeat:stretch | repeat | round | space;}
+/*
+: 9개 영역중 모서리 영역은 제외하고 반복함  
+
+- stretch : 크기에 맞게 이미지를 늘리거나 줄임
+- repeat : 크기에 맞게 이미지를 반복하고 크기에 맞지 않으면 이미지가 잘림
+- round : 크기에 맞게 이미지를 반복하고 크기에 맞지 않으면 이미지를 늘리거나 줄임
+- space : 크기에 맞게 이미지를 반복하고 크기에 맞지 않으면 공백 삽입
+*/
+
+
+E {box-shadow:length;}
+E {box-shadow:x y blur spread color;}
+E {box-shadow:x y color;}
+E {text-shadow:1px 1px 1px 1px rgb(0 0 0);}
+E {text-shadow:-1px -1px rgb(0 0 0);}
+E {text-shadow:inset 1px 1px 1px 1px rgb(0 0 0);}
 ```
 
 
