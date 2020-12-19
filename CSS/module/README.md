@@ -1,18 +1,18 @@
 # index
 
-https://www.w3.org/Style/CSS/specs.en.html
+https://www.w3.org/Style/CSS/specs.en.html   
 
 
 - [Syntax](./css-syntax.md)
 - [Namespaces](./css-namespaces.md)
 - [Cascading & Inheritance](css-cascading.md)
+- [Media Query](./css-media-query.md)
 - [Selectors](./css-selectors.md)
 - [Pseudo Elements](./css-pseudo.md)
 - [Generated Content](./css-content.md)
 - Writing Mode (https://www.w3.org/TR/css-writing-modes/)
 - [Value & Unit](./css-value.md)
 - [Variable](./css-variable.md)
-- [Media Query](./css-media-query.md)
 - [Display](./css-display.md)
 - [Box Sizing](./css-box-sizing.md)
 - [Box Model](./css-box.md)
@@ -39,13 +39,18 @@ https://www.w3.org/Style/CSS/specs.en.html
 - [Transform](./css-transform.md)
 - [Animation](./css-animation.md)
 - [Easing Function](./css-easing.md)
+- Will Change (https://www.w3.org/TR/css-will-change/)
+- Filter Effect (https://www.w3.org/TR/filter-effects/)
+- Compositing & Blending (https://www.w3.org/TR/compositing)
 - Scroll Snap (https://www.w3.org/TR/css-scroll-snap/)
 - Contain (https://www.w3.org/TR/css-contain/)
 - Spatial Navigation (https://www.w3.org/TR/css-nav/)
 - Box Alignment (https://www.w3.org/TR/css-align/)
 - Paged Media (https://www.w3.org/TR/css-page/)
+- Shape (https://www.w3.org/TR/css-shapes/)
 - Masking (https://www.w3.org/TR/css-masking/)
 - User Timing (https://www.w3.org/TR/user-timing/)
+- Speech (https://www.w3.org/TR/css-speech/)
 - MathML (https://www.w3.org/TR/mathml-for-css/)
 - Ruby (https://www.w3.org/TR/css-ruby/)
 
