@@ -40,6 +40,16 @@ https://www.w3.org/TR/css-easing/
 
 
 E {transition-delay:time;}
+/*
+전환 시간보다 작은 시간을 지정하면 애니메이션 중간 부터 전환이 바로 진행됨
+*/
+```
+
+
+**performance**   
+```css
+E {will-change:property;}
+E > F {position:absolute | fixed;transition-property:property;}
 ```
 
 
