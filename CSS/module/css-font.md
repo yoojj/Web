@@ -3,14 +3,12 @@ https://www.w3.org/TR/css-fonts/
 
 
 **at rule**
-- @font-face
-- @font-feature-values
-- @font-palette-values
+- [@font-face](#@font-face)
 
 
 속성 | 설명
 ---|---
-font | 글자 속성 축약
+font             | font-* 속성 축약
 font-family      | 글자의 글꼴 지정
 font-weight      | 글자의 굵기나 가중치 지정  
 font-stretch     | 글자의 폭 지정  
@@ -23,10 +21,10 @@ font-synthesis-style  | 글꼴을 합성 여부 지정
 font-synthesis-small-caps | 글꼴을 합성 여부 지정  
 font-display           |
 font-kerning           |
-font-variant           |
+font-variant           | font-variant-* 속성 축약
 font-variant-ligatures |
 font-variant-position  |
-font-variant-caps      |
+font-variant-caps      | 글자의 대소문자 처리 방법 지정
 font-variant-numeric   |
 font-variant-alternates|
 font-variant-east-asian|
@@ -39,7 +37,6 @@ font-palette           |
 
 ```css
 E {font:font-style font-variant font-weight font-stretch font-size line-height font-family;}
-E {font:normal ? 400 0 100% 1.3 sans-serif;}
 
 
 E {font-family:"font name", font-name, sans-serif;}
@@ -87,6 +84,10 @@ ultra-expanded  200%
 
 
 E {font-style:normal | italic | oblique<-90deg ~ 90deg>;}
+/*
+oblique
+: 글자의 기울어진 형태 표현
+*/
 
 
 E {font-size: absolute-size | relative-size | length;}
@@ -144,7 +145,65 @@ E {font-synthesis-small-caps:auto | none;}
 auto
 : font-family로 지정한 글꼴이 작은 대문자를 지원하지 않는 경우 글꼴을 합성함
 */
+
+
+E {font-variant-caps:normal | small-caps | all-small-caps;}
+/*
+- small-caps : 첫 단어를 제외하고 소문자 크기를 기준으로 모든 글자 대문자로 변경  
+- all-small-caps : 소문자 크기를 기준으로 모든 글자를 대문자로 변경
+*/
 ```
+
+
+
+## @font-face
+
+- @font-feature-values
+- @font-palette-values
+
+
+```css
+@font-face {
+    <declaration-list>
+}
+
+
+/* 필수 */
+@font-face {
+    font-family:"font-name";
+    src:url("font-name.eot");
+    src:local("※"),
+        url("font-name.eot?#iefix") format("embedded-opentype"),
+        url("font-name.woff2") format("woff2"),
+        url("font-name.woff") format("woff"),
+        url("font-name.ttf") format("truetype"),
+        url("font-name.svg#svgFontName") format("svg");
+}
+
+/* 옵션 */
+@font-face {
+    font-style:<font-style-value>;
+    font-weight:<font-weight-value>;
+    font-stretch:<font-stretch-value>;
+    unicode-range:urange;
+    font-feature-settings:normal | <feature-tag-value>;
+    font-variation-settings:normal | string;
+    font-named-instance:auto | string;
+    font-display:auto | block | swap | fallback | optional;
+    font-language-override:normal | string;
+    ascent-override:normal | percentage;
+    descent-override:normal | percentage;
+    line-gap-override:normal | percentage;
+}
+
+
+@font-feature-values {
+    font-display:auto | block | swap | fallback | optional;
+}
+```
+
+font format    
+https://www.w3.org/TR/css-fonts/#font-face-src-format-types
 
 
 
