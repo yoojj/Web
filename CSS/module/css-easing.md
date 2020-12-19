@@ -5,9 +5,9 @@ https://www.w3.org/TR/css-easing/
 https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function
 
 
-- linear easing function
-- cubic bezier easing function
-- step easing function
+- [linear easing function](#linear-easing-function)
+- [cubic bezier easing function](#cubic-bezier-easing-function)
+- [step easing function](#step-easing-function)
 
 
 **interpolation**  
@@ -47,7 +47,7 @@ http://www.css3beziercurve.net/
 
 ```
 step-start  = steps(1, start)
-step-end    = steps(1, start)
+step-end    = steps(1, end)
 steps()
 ```
 
