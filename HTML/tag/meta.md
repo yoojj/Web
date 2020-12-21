@@ -3,7 +3,7 @@
 : SEO에 영향을 미침     
 
 
-**Metadata**   
+**+ metadata**   
 : 웹 문서에 대한 추가 정보 모음     
 : 사용자보다 검색 엔진 같은 기계를 위한 정보    
 
@@ -22,7 +22,7 @@ name        | 메타데이터 이름으로 charset, http-equiv, itemprop 속성�
 itemprop    | 마이크로 데이터를 위한 속성
 
 
-**마이크로 데이터**
+**+ 마이크로 데이터**  
 https://github.com/yoojj/Web/blob/master/HTML/html-microdata.md
 
 
@@ -55,11 +55,11 @@ http-equiv
 -->
 
 
-<meta http-equiv="refresh" content="1">
+<meta http-equiv="refresh" content="">
 <!--
 : content 값 마다 웹 문서 새로고침
 
-<meta http-equiv="refresh" content="2; URL=https://www.example.com">
+<meta http-equiv="refresh" content="3; URL=https://www.example.com">
 : content 값 이후 해당 경로로 이동
 -->
 
@@ -80,7 +80,7 @@ http-equiv
 -->
 
 
-<meta http-equiv="content-security-policy" content="지시문 옵션">
+<meta http-equiv="content-security-policy" content="">
 <!--
 : 콘텐츠 보안 정책 정의
 https://github.com/yoojj/Web/blob/master/WebStandard/csp.md
@@ -107,7 +107,7 @@ https://github.com/yoojj/Web/blob/master/WebStandard/csp.md
 <meta name="keywords" content="a,b,c,d,e">
 <!-- 웹 문서와 관련된 키워드 정의 -->
 
-<meta name="referrer" content="옵션">
+<meta name="referrer" content="">
 <!--
 : HTTP 리퍼러 제어
 
@@ -128,7 +128,6 @@ https://github.com/yoojj/Web/blob/master/WebStandard/csp.md
 
 
 리퍼러 제거
-<code>
 <meta name="referrer" content="no-referrer">
 
 <javascript>
@@ -137,12 +136,11 @@ meta.name = 'referrer';
 meta.content = 'no-referrer';
 document.getElementsByTagName('head')[0].appendChild(meta);
 </javascript>
-</code>
 -->
 
 
-<meta name="theme-color" content="">
-<meta name="color-scheme" content="">
+<meta name="theme-color" content="black">
+<meta name="color-scheme" content="black">
 <!-- 인터페이스 컬러 변경 -->
 ```
 
@@ -160,24 +158,23 @@ document.getElementsByTagName('head')[0].appendChild(meta);
 - initial-scale=0.0~10.0
 - maximum-scale=0.0~10.0 : 최대 확대 비율
 - minimum-scale=0.0~10.0 : 최소 축소 비율
-- user-scalable=yes/no : 기기 확대 여부 설정
+- user-scalable=yes/no   : 기기 확대 여부 설정
 -->
 
 
 <meta name="format-detection" content="telephone=no, address=no, email=no">
 <meta name="format-detection" content="telephone=no">
-<!-- (모바일) 전화번호, 이메일 자동 링크 해제 -->
+<!-- 모바일 경우 전화번호와 이메일의 자동 링크 해제 지정 -->
 
 
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<meta name="apple-mobile-web-app-title" content="" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="">
 <!-- 아이폰, 아이패드 관련 설정 -->
 
 
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="경로">
+<meta name="msapplication-TileColor" content="black">
+<meta name="msapplication-TileImage" content="url">
 <!-- 윈도우 타일 아이콘 -->
 
 
@@ -229,7 +226,7 @@ document.getElementsByTagName('head')[0].appendChild(meta);
 <meta property="og:description" content="">
 <!--
 : 오픈 그래프 프로토콜
-: 문서 링크 공유시 문서에 대한 미리보기를 위한 정보
+: 웹 문서 링크 공유시 웹 문서에 대한 미리보기를 위한 정보
 -->
 
 
