@@ -1,15 +1,16 @@
 # meta
-: 웹 문서에 대한 상세 정보 및 메타 데이터를 위한 엘리먼트   
+: 웹 문서에 대한 상세 정보 및 메타 데이터를 위한 태그      
 : SEO에 영향을 미침     
 
 
 **Metadata**   
-: 웹 문서에 대한 설명이나 작성자 등 추가 정보 모음     
-: 사용자보다 검색 엔진과 같은 기계를 위한 정보    
+: 웹 문서에 대한 추가 정보 모음     
+: 사용자보다 검색 엔진 같은 기계를 위한 정보    
 
 
 **부모 요소**  
 - [head](./head.md)
+- [noscript](/script.md#noscript)
 
 
 속성 | 설명
@@ -18,8 +19,11 @@ charset     | 문자 인코딩 지정
 content     | http-equiv와 name 속성 값 지정
 http-equiv  | HTTP 헤더 작동 방식 변경
 name        | 메타데이터 이름으로 charset, http-equiv, itemprop 속성과 중복 정의 불가  
-itemprop    | [마이크로 데이터](../html-microdata.md)를 위한 속성
+itemprop    | 마이크로 데이터를 위한 속성
 
+
+**마이크로 데이터**
+https://github.com/yoojj/Web/blob/master/HTML/html-microdata.md
 
 
 ```html
@@ -79,39 +83,7 @@ http-equiv
 <meta http-equiv="content-security-policy" content="지시문 옵션">
 <!--
 : 콘텐츠 보안 정책 정의
-: HTTP 헤더를 정의하여 로드될 리소스를 제어해 XSS 방지
-
-
-<meta http-equiv="Content-Security-Policy"
-    content="default-src 'self' https://example.com;
-    child-src 'none';">
-
-
-지시문
-- base-uri : base 요소에 나타나는 url 제한
-- child-src : 콘텐츠 url 정의
-- connect-src : XHR, WebSockets, EventSource 사용시 연결될 url 제한  
-- font-src : 웹 폰트 출처  
-- form-action
-- frame-ancestors
-- img-src
-- media-src
-- object-src
-- plugin-types
-- report-uri
-- style-src
-- upgrade-insecure-requests
-
-옵션
-- none : 차단, 허용 불가
-- self : 현재 출처만 허용
-- unsafe-inline : inline JS, inline CSS 허용
-- unsafe-eval : JS eval() 허용
-
-
-https://www.w3.org/TR/CSP3/
-https://developers.google.com/web/fundamentals/security/csp
-https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
+https://github.com/yoojj/Web/blob/master/WebStandard/csp.md
 -->
 
 
