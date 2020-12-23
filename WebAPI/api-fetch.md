@@ -1,70 +1,65 @@
-# Fetch
-≒ XMLHttpRequest  
-: XHR의 문제점 보완      
-: Promise 기반 비동기 방식  
-: HTTP의 모든 개념 도입     
+# Fetch API
 
 
 https://fetch.spec.whatwg.org/
-
-
-**fecth interface**
-- [Headers](#headers)
-- [Body](#body)
-- [Request](#request)
-- [Response](#response)
-
 
 
 **fecth polyfill**    
 https://github.com/github/fetch
 
 
+
+## API
+
+
+- [Headers](#headers)
+- [Body](#body)
+- [Request](#request)
+- [Response](#response)
+
+
+ex.
 ```js
-// WindowOrWorkerGlobalScope.fecth()
-// - Window.fetch()
-// - WorkerGlobalScope.fetch()
-fecth('resource url | Request', { option })
-    .then( response => response.json() )
+/*
+- WindowOrWorkerGlobalScope.fecth()
+- Window.fetch()
+- WorkerGlobalScope.fetch()
+*/
+
+var option {
+    headers: new Headers(),
+    body: new Body(),
+    request: new Request(),
+};
+
+fecth('url', { option })
+    .then( response => json() )
     .then( json => console.log(json) )
     .catch( error => console.error(error) );
 ```
 
 
-**option**  
 
-옵션 | 설명
----|---
-method  | HTTP 메소드 중 GET, POST, HEAD 메소드 지원
-headers | HTTP 헤더 지정 -- [Header](#header)
-body    | HTTP 바디 지정 (Blob, BufferSource, FormData, URLSearchParams 등)
-mode    | CORS 모드 지정 (cors, no-cors, same-origin 등)
-referrer    | 리퍼러 지정
-referrerPolicy | 리퍼러 정책 지정
-integrity   | 리소스 무결성을 확인하기 위한 해시 값 지정  
-keepalive   | keepalive 지정  
-credentials | (omit, include, same-origin)
-cache       | 캐시 제어 -- [Requst.cache](#requestcache)
-redirect    | 리다이렉트 제어 -- [Request.redirect](#requestredirect)
+### Headers
 
+**Headers**
+- constructor(HeadersInit)
+- append()
+- delete()
+- get()
+- has()
+- set()
+- iterable
+    - keys()
+    - entries()
+    - values()
 
 
-## Headers
-
-- Headers.append()
-- Headers.has()
-- Headers.set()
-- Headers.get()
-- Headers.keys()
-- Headers.entries()
-- Headers.values()
-- Headers.delete()
-
+ex.
 ```js
 var header = new Headers();
 
 header.append('content-type', 'text/plan');
-(header.get('content-type') === 'text/plan') == true
 
 for(var h of header.entries()) {
     console.log(h[0] === 'content-type');
@@ -73,80 +68,125 @@ for(var h of header.entries()) {
 
 
 
-## Body
+### Body
 
-**속성**
-- Body.body
-- Body.bodyUsed
-
-**메소드**
-- Body.text()
-- Body.json()
-- Body.blob()
-- Body.formData()
-- Body.arrayBuffer()
+**Body**
+- body
+- bodyUsed
+- arrayBuffer() : ArrayBuffer 객체로 요청이나 응답받음
+- blob() : Blob 객체로 요청이나 응답받음
+- formData() : FormData 객체로 요청이나 응답받음
+- json() : Json 객체로 요청이나 응답받음
+- text()
 
 
 
-## Request
-: Body 인터페이스 구현   
+### Request
 
-**속성**  
-- Request.method
-- Request.headers
-- Request.mode
-- Request.referrer
-- Request.referrerPolicy
-- Request.credentials
-- Request.cache
-- Request.context
-- Request.destination
-- Request.integrity
-- Request.redirect
-- Request.url
-
-**메소드**  
-- Request.clone()
-
-
-### Request.cache
-
-값 | 설명
----|---
-default  |
-no-store | 캐시를 찾지 않으며 응답받은 리소스로 캐시를 업데이트하지 않음  
-reload   | 캐시를 찾지 않으며 응답받은 리소스로 캐시를 업데이트함
-no-cache |
-force-cache    |
-only-if-cached |
+**Request** implements Body     
+- constructor(RequestInfo, RequestInit)
+- method : HTTP 메소드 지정
+- url : url 지정
+- headers : 요청과 연관된 Headers 객체
+- destination : RequestDestination
+- referrer : 리퍼러 지정
+- referrerPolicy : 리퍼러 정책 지정  
+- mode : RequestMode 지정
+- credentials : RequestCredentials 지정
+- cache : RequestCache 지정
+- redirect : RequestRedirect 지정
+- integrity : 리소스 무결성을 확인하기 위한 해시 값 지정
+- keepalive
+- isReloadNavigation
+- isHistoryNavigation
+- signal
+- clone()
 
 
-### Request.redirect
+**RequestInit**
+- method
+- headers
+- body
+- referrer
+- referrerPolicy
+- mode : RequestMode 지정
+- credentials : RequestCredentials 지정
+- cache : RequestCache 지정
+- redirect : RequestRedirect 지정
+- integrity : 리소스 무결성을 확인하기 위한 해시 값 지정
+- keepalive
+- signal
+- window
 
-값 | 설명
----|---
-follow | 리다이렉트를 따라감
-manual | 리다이렉트를 따라가지 않고 리다이렉트 정보만 전달  
-error  | 리다이렉트가 발생하면 오류
+
+**RequestDestination**
+- ''
+- 'audio'
+- 'audioworklet'
+- 'document'
+- 'embed'
+- 'font'
+- ...
+
+
+**RequestMode**
+- 'navigate'
+- 'same-origin'
+- 'no-cors'
+- 'cors'
+
+
+**RequestCredentials**
+- 'omit'
+- 'same-origin'
+- 'include'
+
+
+**RequestCache**
+- 'default'
+- 'no-store' : 캐시를 찾지 않으며 응답받은 리소스로 캐시를 업데이트하지 않음
+- 'reload' : 캐시를 찾지 않으며 응답받은 리소스로 캐시를 업데이트함
+- 'no-cache'
+- 'force-cache'
+- 'only-if-cached'
+
+
+**RequestRedirect**
+- 'follow' : 리다이렉트를 따라감
+- 'error'  : 리다이렉트가 발생하면 오류
+- 'manual' : 리다이렉트를 따라가지 않고 리다이렉트 정보만 전달함
 
 
 
-## Response
-: Body 인터페이스 구현   
+### Response
 
-**속성**  
-- Response.headers
-- Response.ok
-- Response.status
-- Response.statusText
-- Response.type
-- Response.url
-- Response.redirected
+**Response** implements Body  
+- constructor(BodyInit, ResponseInit)
+- error()
+- redirect(url, status)
+- type : ResponseType
+- url
+- redirected
+- status : 응답 코드 반환
+- ok : status가 2xx인 경우 true 반환
+- statusText
+- headers : Headers 객체 반환
+- clone()
 
-**메소드**
-- Response.clone()
-- Response.redirect()
-- Response.error()
+
+**ResponseInit**
+- status
+- statusText
+- headers
+
+
+**ResponseType**
+- 'basic'
+- 'cors'
+- 'default'
+- 'error'
+- 'opaque'
+- 'opaqueredirect'
 
 
 
