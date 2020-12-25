@@ -1,12 +1,11 @@
 # File API
 : 파일 객체를 표현하고 파일 데이터에 접근하기 위한 API  
 
+https://www.w3.org/TR/FileAPI/    
+http://trac.webkit.org/browser/webkit/trunk/Source/WebCore/fileapi
 
-https://www.w3.org/TR/FileAPI/
 
-
-## API  
-
+**api**
 - [Blob](#blob)
 - [File](#file)
 - [FileList](#filelist)
@@ -14,29 +13,45 @@ https://www.w3.org/TR/FileAPI/
 
 
 
-### Blob
+## Blob
 : Binary Large Object   
-: 텍스트 파일 데이터나 이진 데이터를 담는 객체  
+
+```webidl
+[Exposed=(Window,Worker), Serializable]
+interface Blob {
+  constructor(optional sequence<BlobPart> blobParts,
+              optional BlobPropertyBag options = {});
+
+  readonly attribute unsigned long long size;
+  readonly attribute DOMString type;
+
+  Blob slice(optional [Clamp] long long start,
+            optional [Clamp] long long end,
+            optional DOMString contentType);
+
+  [NewObject] ReadableStream stream();
+  [NewObject] Promise<USVString> text();
+  [NewObject] Promise<ArrayBuffer> arrayBuffer();
+};
+
+enum EndingType { "transparent", "native" };
+
+dictionary BlobPropertyBag {
+  DOMString type = "";
+  EndingType endings = "transparent";
+};
+
+typedef (BufferSource or Blob or USVString) BlobPart;
+```
 
 
-**Blob**
-- constructor(BufferSource | Blob | USVString, BlobPropertyBag)
-- size
-- type
-- slice(start, end, type) : 해당 범위의 바이트를 복제해 새   Blob 객체로 생성하고 반환
-- stream()
-- text()
-- arrayBuffer()
-
-
-**BlobPropertyBag**
-- type
-- endings : EndingType 지정
+**slice(start, end, type)**  
+: 해당 범위의 바이트를 복제해 새 Blob 객체를 생성하고 이를 반환
 
 
 **EndingType**
-- 'transparent' : 기본 줄바꿈 문자 지정   
-- 'native' : OS에 맞춰 줄바꿈 문자 지정   
+- 'transparent' : 기본 줄바꿈 문자 사용   
+- 'native' : OS에 맞춘 줄바꿈 문자 사용  
 
 
 ex.
@@ -47,19 +62,23 @@ var blob = new Blob([data], {type: 'text/plain'});
 
 
 
-### File
-: 파일 시스템에서 얻은 파일에 대한 정보 제공    
+## File
+: 파일 시스템에서 얻은 파일에 대한 정보 제공  
 
+```webidl
+[Exposed=(Window,Worker), Serializable]
+interface File : Blob {
+  constructor(sequence<BlobPart> fileBits,
+              USVString fileName,
+              optional FilePropertyBag options = {});
+  readonly attribute DOMString name;
+  readonly attribute long long lastModified;
+};
 
-**File** implements Blob  
-- constructor(BlobPart, USVString, FilePropertyBag)
-- name
-- lastModified
-
-
-**FilePropertyBag** implements BlobPropertyBag  
-- lastModified
-
+dictionary FilePropertyBag : BlobPropertyBag {
+  long long lastModified;
+};
+```
 
 ex.
 ```html
@@ -74,13 +93,16 @@ var file = input.files[0];
 
 
 
-### FileList
+## FileList
 : 파일 시스템에서 얻은 파일 리스트에 대한 정보 제공
 
-
-**FileList**
-- item(index) : File 객체 반환
-- length
+```webidl
+[Exposed=(Window,Worker), Serializable]
+interface FileList {
+  getter File? item(unsigned long index);
+  readonly attribute unsigned long length;
+};
+```
 
 
 ex.
@@ -99,30 +121,38 @@ for (var i = 0, len = files.length; i < len; i++) {
 
 
 
-### FileReader
+## FileReader
 
+```webidl
+[Exposed=(Window,Worker)]
+interface FileReader: EventTarget {
+  constructor();
 
-**FileReader**
-- constructor()
-- readAsArrayBuffer(Blob)
-- readAsBinaryString(Blob)
-- readAsText(Blob, encoding)
-- readAsDataUrl(Blob)
-- abort()
-- EMPTY
-- LOADING
-- DONE
-- readyState
-- result
-- error : DOMException 객체 반환
+  void readAsArrayBuffer(Blob blob);
+  void readAsBinaryString(Blob blob);
+  void readAsText(Blob blob, optional DOMString encoding);
+  void readAsDataURL(Blob blob);
 
+  void abort();
 
-**FileReaderSync**
-- constructor()
-- readAsArrayBuffer(Blob)
-- readAsBinaryString(Blob)
-- readAsText(Blob, encoding)
-- readAsDataUrl(Blob)
+  const unsigned short EMPTY = 0;
+  const unsigned short LOADING = 1;
+  const unsigned short DONE = 2;
+
+  readonly attribute unsigned short readyState;
+
+  readonly attribute (DOMString or ArrayBuffer)? result;
+
+  readonly attribute DOMException? error;
+
+  attribute EventHandler onloadstart;
+  attribute EventHandler onprogress;
+  attribute EventHandler onload;
+  attribute EventHandler onabort;
+  attribute EventHandler onerror;
+  attribute EventHandler onloadend;
+};
+```
 
 
 ex.
