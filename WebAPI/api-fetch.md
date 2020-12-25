@@ -1,17 +1,14 @@
 # Fetch API
 
-
-https://fetch.spec.whatwg.org/
+https://fetch.spec.whatwg.org/   
+http://trac.webkit.org/browser/webkit/trunk/Source/WebCore/Modules/fetch
 
 
 **fecth polyfill**    
 https://github.com/github/fetch
 
 
-
-## API
-
-
+**api**
 - [Headers](#headers)
 - [Body](#body)
 - [Request](#request)
@@ -20,15 +17,8 @@ https://github.com/github/fetch
 
 ex.
 ```js
-/*
-- WindowOrWorkerGlobalScope.fecth()
-- Window.fetch()
-- WorkerGlobalScope.fetch()
-*/
-
 var option {
     headers: new Headers(),
-    body: new Body(),
     request: new Request(),
 };
 
@@ -40,19 +30,23 @@ fecth('url', { option })
 
 
 
-### Headers
+## Headers
 
-**Headers**
-- constructor(HeadersInit)
-- append()
-- delete()
-- get()
-- has()
-- set()
-- iterable
-    - keys()
-    - entries()
-    - values()
+```webidl
+[Exposed=(Window,Worker)]
+interface Headers {
+  constructor(optional HeadersInit init);
+
+  undefined append(ByteString name, ByteString value);
+  undefined delete(ByteString name);
+  ByteString? get(ByteString name);
+  boolean has(ByteString name);
+  undefined set(ByteString name, ByteString value);
+  iterable<ByteString, ByteString>;
+};
+
+typedef (sequence<sequence<ByteString>> or record<ByteString, ByteString>) HeadersInit;
+```
 
 
 ex.
@@ -68,125 +62,125 @@ for(var h of header.entries()) {
 
 
 
-### Body
+## Body
 
-**Body**
-- body
-- bodyUsed
-- arrayBuffer() : ArrayBuffer 객체로 요청이나 응답받음
-- blob() : Blob 객체로 요청이나 응답받음
-- formData() : FormData 객체로 요청이나 응답받음
-- json() : Json 객체로 요청이나 응답받음
-- text()
-
-
-
-### Request
-
-**Request** implements Body     
-- constructor(RequestInfo, RequestInit)
-- method : HTTP 메소드 지정
-- url : url 지정
-- headers : 요청과 연관된 Headers 객체
-- destination : RequestDestination
-- referrer : 리퍼러 지정
-- referrerPolicy : 리퍼러 정책 지정  
-- mode : RequestMode 지정
-- credentials : RequestCredentials 지정
-- cache : RequestCache 지정
-- redirect : RequestRedirect 지정
-- integrity : 리소스 무결성을 확인하기 위한 해시 값 지정
-- keepalive
-- isReloadNavigation
-- isHistoryNavigation
-- signal
-- clone()
+```webidl
+interface mixin Body {
+  readonly attribute ReadableStream? body;
+  readonly attribute boolean bodyUsed;
+  [NewObject] Promise<ArrayBuffer> arrayBuffer();
+  [NewObject] Promise<Blob> blob();
+  [NewObject] Promise<FormData> formData();
+  [NewObject] Promise<any> json();
+  [NewObject] Promise<USVString> text();
+};
+```
 
 
-**RequestInit**
-- method
-- headers
-- body
-- referrer
-- referrerPolicy
-- mode : RequestMode 지정
-- credentials : RequestCredentials 지정
-- cache : RequestCache 지정
-- redirect : RequestRedirect 지정
-- integrity : 리소스 무결성을 확인하기 위한 해시 값 지정
-- keepalive
-- signal
-- window
+
+## Request
+
+```webidl
+[Exposed=(Window,Worker)]
+interface Request {
+  constructor(RequestInfo input, optional RequestInit init = {});
+
+  readonly attribute ByteString method;
+  readonly attribute USVString url;
+  [SameObject] readonly attribute Headers headers;
+
+  readonly attribute RequestDestination destination;
+  readonly attribute USVString referrer;
+  readonly attribute ReferrerPolicy referrerPolicy;
+  readonly attribute RequestMode mode;
+  readonly attribute RequestCredentials credentials;
+  readonly attribute RequestCache cache;
+  readonly attribute RequestRedirect redirect;
+  readonly attribute DOMString integrity;
+  readonly attribute boolean keepalive;
+  readonly attribute boolean isReloadNavigation;
+  readonly attribute boolean isHistoryNavigation;
+  readonly attribute AbortSignal signal;
+
+  [NewObject] Request clone();
+};
+
+Request includes Body;
+
+dictionary RequestInit {
+  ByteString method;
+  HeadersInit headers;
+  BodyInit? body;
+  USVString referrer;
+  ReferrerPolicy referrerPolicy;
+  RequestMode mode;
+  RequestCredentials credentials;
+  RequestCache cache;
+  RequestRedirect redirect;
+  DOMString integrity;
+  boolean keepalive;
+  AbortSignal? signal;
+  any window;
+};
+
+enum RequestDestination { "", "audio", "audioworklet", "document", "embed", "font", "frame", "iframe", "image", "manifest", "object", "paintworklet", "report", "script", "sharedworker", "style",  "track", "video", "worker", "xslt" };
+enum RequestMode { "navigate", "same-origin", "no-cors", "cors" };
+enum RequestCredentials { "omit", "same-origin", "include" };
+enum RequestCache { "default", "no-store", "reload", "no-cache", "force-cache", "only-if-cached" };
+enum RequestRedirect { "follow", "error", "manual" };
+```
 
 
-**RequestDestination**
-- ''
-- 'audio'
-- 'audioworklet'
-- 'document'
-- 'embed'
-- 'font'
-- ...
-
-
-**RequestMode**
-- 'navigate'
-- 'same-origin'
-- 'no-cors'
-- 'cors'
-
-
-**RequestCredentials**
-- 'omit'
-- 'same-origin'
-- 'include'
-
-
-**RequestCache**
-- 'default'
-- 'no-store' : 캐시를 찾지 않으며 응답받은 리소스로 캐시를 업데이트하지 않음
-- 'reload' : 캐시를 찾지 않으며 응답받은 리소스로 캐시를 업데이트함
-- 'no-cache'
-- 'force-cache'
-- 'only-if-cached'
+**integrity**  
+: 리소스 무결성을 확인하기 위한 해시 값 지정
 
 
 **RequestRedirect**
-- 'follow' : 리다이렉트를 따라감
-- 'error'  : 리다이렉트가 발생하면 오류
-- 'manual' : 리다이렉트를 따라가지 않고 리다이렉트 정보만 전달함
+
+값 | 설명
+---|---
+follow | 리다이렉트를 따라감
+error  | 리다이렉트가 발생하면 오류
+manual | 리다이렉트를 따라가지 않고 리다이렉트 정보만 전달함
 
 
 
-### Response
+## Response
 
-**Response** implements Body  
-- constructor(BodyInit, ResponseInit)
-- error()
-- redirect(url, status)
-- type : ResponseType
-- url
-- redirected
-- status : 응답 코드 반환
-- ok : status가 2xx인 경우 true 반환
-- statusText
-- headers : Headers 객체 반환
-- clone()
+```webidl
+[Exposed=(Window,Worker)]
+interface Response {
+  constructor(optional BodyInit? body = null, optional ResponseInit init = {});
+
+  [NewObject] static Response error();
+  [NewObject] static Response redirect(USVString url, optional unsigned short status = 302);
+
+  readonly attribute ResponseType type;
+
+  readonly attribute USVString url;
+  readonly attribute boolean redirected;
+  readonly attribute unsigned short status;
+  readonly attribute boolean ok;
+  readonly attribute ByteString statusText;
+  [SameObject] readonly attribute Headers headers;
+
+  [NewObject] Response clone();
+};
+
+Response includes Body;
+
+dictionary ResponseInit {
+  unsigned short status = 200;
+  ByteString statusText = "";
+  HeadersInit headers;
+};
+
+enum ResponseType { "basic", "cors", "default", "error", "opaque", "opaqueredirect" };
+```
 
 
-**ResponseInit**
-- status
-- statusText
-- headers
-
-
-**ResponseType**
-- 'basic'
-- 'cors'
-- 'default'
-- 'error'
-- 'opaque'
-- 'opaqueredirect'
+**ok**  
+: status가 2xx인 경우 true 반환
 
 
 
