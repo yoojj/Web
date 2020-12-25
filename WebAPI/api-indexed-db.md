@@ -7,14 +7,14 @@ http://trac.webkit.org/browser/webkit/trunk/Source/WebCore/Modules/indexeddb
 
 
 **api**
-- IDBRequest
-- IDBOpenDBRequest
-- IDBVersionChangeEvent
-- IDBObjectStore
-- IDBIndex
-- IDBKeyRange
-- IDBCursor
-- IDBTransaction
+- [IDBRequest](#idbrequest)
+- [IDBFactory](#idbfactory)
+- [IDBDatabase](#idbdatabase)
+- [IDBObjectStore](#idbobjectstore)
+- [IDBIndex](#idbindex)
+- [IDBKeyRange](#idbkeyrange)
+- [IDBCursor](#idbcursor)
+- [IDBTransaction](#idbtransaction)
 
 
 ex.
@@ -56,27 +56,30 @@ interface IDBRequest : EventTarget {
 };
 
 enum IDBRequestReadyState { "pending", "done" };
-```
 
 
-
-## IDBOpenDBRequest
-
-```webidl
 [Exposed=(Window,Worker)]
 interface IDBOpenDBRequest : IDBRequest {
   attribute EventHandler onblocked;
   attribute EventHandler onupgradeneeded;
 };
-```
 
 
-
-## IDBVersionChangeEvent
-
-```webidl
 [Exposed=(Window,Worker),
   Constructor(DOMString type, optional IDBVersionChangeEventInit eventInitDict)]
+interface IDBVersionChangeEvent : Event {
+  readonly attribute unsigned long long oldVersion;
+  readonly attribute unsigned long long? newVersion;
+};
+
+dictionary IDBVersionChangeEventInit : EventInit {
+  unsigned long long oldVersion = 0;
+  unsigned long long? newVersion = null;
+};
+
+
+[Exposed=(Window,Worker),
+ Constructor(DOMString type, optional IDBVersionChangeEventInit eventInitDict)]
 interface IDBVersionChangeEvent : Event {
   readonly attribute unsigned long long oldVersion;
   readonly attribute unsigned long long? newVersion;
