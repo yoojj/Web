@@ -1,30 +1,46 @@
 # Browser
 : 웹 서버에 HTTP 요청을 하는 프로그램    
-: 웹 문서(html, css, js 등), 이미지, 비디오 등을 표시  
+: 응답 받은 리소스(웹문서, 이미지, 비디오 등)를 렌더링   
 
 
-**종류**   
-- [Text-base Browser](./browser-text-base.md)
-- [Headless Browser](./browser-headless.md)
-- [Mobile Browser](./browser-mobile.md)
-- [Cross-platform Browser](./browser-cross-platform.md)
+- [브라우저 구성 요소](#브라우저-구성-요소)
+- 브라우저 분류   
+    - [Headless Browser](./headless-browser.md)
+    - [Text-based Browser](./text-based-browser.md)
+    - Lightweight Browser
+    - Mobile Browser, Micro Browser : 모바일 장치에 특화된 브라우저  
+    - Cross-platform Browser : 여러 운영 체제용으로 개발된 브라우저  
+    - Specialty Browser : 특수 기능을 제공하는 브라우저  
 
+
+
+**초기 브라우저 특징**
+
+브라우저 | 특징
+---|---
+WorldWideWeb(Nexus)    | 최초 CLI 브라우저로 특정 운영체제에서만 동작  
+Line Mode Browser(LMB) | 크로스 플랫폼을 위한 CLI 브라우저
+Lynx    | 텍스트 기반 브라우저   
+Erwise  | 최초 GUI 기반 브라우저
+Mosaic  | 웹 문서에 이미지 삽입 지원   
+Arena   | HTML table과 CSS1을 지원한 브라우저
+Netscape Navigator | 서버에서 받은 데이터를 캐시에 저장하고 이를 재사용, JavaScript를 포함  
+Internet Explorer  | Windows OS에 브라우저를 포함, HTML 포맷 확장
 
 
 **최초 브라우저**
-![최초 브라우저 이미지](https://www.w3.org/MarkUp/tims_editor){: width="50%" height="50%"}
-
+![최초 브라우저 이미지](https://www.w3.org/MarkUp/tims_editor)
 
 
 
 ## 브라우저 구성 요소
 
-- [User Interface](./UI.md)
+- User Interface
 - Browser Engine
-- [Layout(Rendering) Engine](./Layout-Engine/)
+- Layout Engine, Rendering Engine
     - HTML Parser
     - CSS Parser
-- [JavaScript Engine](./JavaScript-Engine/)
+- JavaScript Engine
 - UI Backend
 - Data Persistence
 
