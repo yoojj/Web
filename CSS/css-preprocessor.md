@@ -5,8 +5,8 @@
 
 
 **종류**   
-- SASS
-- LESS
+- [SASS](#sass)
+- [LESS](#less)
 - Stylus
 - CSS-Crush
 - ...
@@ -29,7 +29,7 @@ $ sass -v
 
 
 # node sass
-$ npm install node-sass -g
+$ npm install node-sass
 $ node-sass -v
 ```
 
@@ -37,6 +37,10 @@ $ node-sass -v
 
 ## LESS
 : 변수, 함수, 연산, 중첩, 스코프 등 스크립트 특징 확장  
+
+- SimpLESS
+- Crunch
+
 
 ```html
 <link rel="stylesheet/less" href="style.less">
@@ -46,46 +50,52 @@ $ node-sass -v
 
 
 ## PostCSS
-: node 기반 플러그인-도구로 전처리기처럼 사용 가능        
+: node 기반 플러그인으로 전처리기처럼 사용 가능        
 : 필요한 기능에 맞는 플러그인을 선택해 사용    
+
+**플러그인 목록**  
+https://github.com/postcss/postcss/blob/master/docs/plugins.md
 
 
 ```bash
 # postcss-cli
-$ npm install postcss-cli -g
+$ npm install postcss-cli
 
 # autoprefixer 사용
-$ postcss --use autoprefixer -o 생성.css ./css/*.css
+$ postcss --use autoprefixer -o example.css ./css/*.css
 
 
 # + gulp
 $ npm install gulp-postcss autoprefixer
 
-    # postcss.config.js
-    const gulp = require('gulp');
-    const postcss = require('gulp-postcss');
-    const autoprefixer = require('autoprefixer');
+## postcss.config.js
+var gulp = require('gulp');
+var postcss = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
 
-    gulp.task('css', () => {
-        const plugins = [
-            autoprefixer({browsers: ['last 1 version']}),
-        ]
-        return gulp.src('./css/*.css')
-            .pipe(postcss(plugins))
-            .pipe(gulp.dest('생성'));
-    });
+gulp.task('css', () => {
+    const plugins = [
+        autoprefixer({browsers: ['last 1 version']}),
+    ]
+    return gulp.src('./css/*.css')
+        .pipe(postcss(plugins))
+        .pipe(gulp.dest('생성'));
+});
 
 
 # + webpack
 $ npm install postcss postcss-loader autoprefixer   
 
-    # postcss.config.js
-    module.exports = {
-        plugins: [
-            require('autoprefixer')({
-                'browsers': ['last 1 versions']
-            })
-        ]
-    }
-
+## postcss.config.js
+module.exports = {
+    plugins: [
+        require('autoprefixer')({
+            'browsers': ['last 1 versions']
+        })
+    ]
+}
 ```
+
+
+
+[top](#)
