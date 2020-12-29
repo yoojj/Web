@@ -1,6 +1,5 @@
 # img
-: 이미지 리소스를 표현하기 위한 엘리먼트   
-: 이미지는 HTML과 CSS가 로드 된 후 적용   
+: 이미지 리소스를 표현하기 위한 태그      
 
 > 이미지 다운로드 > 디코딩 > 렌더링
 
@@ -18,7 +17,6 @@ ismap          | 서버측 이미지맵인지 여부 지정 (불리언 속성)
 usemap         | 이미지맵 이름
 crossorigin    | crossorigin 요청 처리 방식 지정
 referrerpolicy | HTTP 리퍼러 정책 설정
-
 
 
 ```html
@@ -79,11 +77,23 @@ img {
 ```
 
 
+**+ img tag**      
+: 1993년 Marc Andreessen 제안   
+http://1997.webhistory.org/www.lists/www-talk.1993q1/0182.html
+
+
 **+ Lazy Loading Images**    
 https://github.com/yoojj/Web/blob/master/WebOptimization/lazy-load-images.md
 
+
 **+ Image Decoding**    
 https://github.com/yoojj/Web/blob/master/WebOptimization/image-decoding.md
+
+
+
+## aria
+
+https://www.w3.org/WAI/tutorials/images/
 
 
 
