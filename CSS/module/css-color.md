@@ -1,5 +1,4 @@
 # CSS Color
-: 텍스트 콘텐츠의 전경색(foreground color)과 불투명도(opacity) 지정을 위한 속성들      
 
 https://www.w3.org/TR/css-color/   
 https://www.w3.org/TR/css-color-5/
@@ -11,49 +10,56 @@ https://www.w3.org/TR/css-color-5/
 
 속성 | 설명
 ---|---
-color   | 텍스트 콘텐츠의 전경색 지정  
-opacity | 텍스트 콘텐츠의 불투명도 지정  
+color   | 텍스트 콘텐츠의 색 지정  
+opacity | 요소의 불투명도 지정  
 
 
 ```css
-/* color keyword */
 E {color:transparent | currentcolor | inherit;}
 /*
-! current-color는 SVG에서 사용하는 속성
+: current-color는 SVG에서 사용하는 속성 값
 */
 
 
-/* named color (https://www.w3.org/TR/css-color/#named-colors) */
 E {color:red;}
+/* named color (https://www.w3.org/TR/css-color/#named-colors) */
 
 
-/* hex color */
 E {color:#ff0000;}
+/* hex color */
 
 
-/* color-function : RGB */
 E {color:rgb(255 0 0 .5);color:rgb(100% 0% 0% .5);}
 E {color:rgba(255 0 0 .5);}
+/* color-function : RGB */
 
 
-/* color-function : HSL */
 E {color:hsl(0 100% 50% .5);}
 E {color:hsla(0 100% 50% .5);}
+/* color-function : HSL */
 
 
-/* color-function : HWB */
 E {color:hwb(0 0% 0%);}
+/* color-function : HWB */
 
 
-/* color-function : LCH */
 E {color:lch();}
+/* color-function : LCH */
 
 
-/* color-function : color() */
 E {color:color(display-p3 1 0 0);}
+/*
+color-function : color()
 
 @color-profile --example {src:url('');}
 E {color:color(example 0 0 0);}
+*/
+
+
+E {opacity:number | percentage;}
+/*
+: 1보다 작은 opacity 값을 적용한 요소는 새로운 스택 컨텍스트를 생성 
+*/
 ```
 
 
