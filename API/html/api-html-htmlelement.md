@@ -1,4 +1,9 @@
-# HTMLElement API
+[HTMLElement](#htmlelement)  
+[HTMLUnknownElement](#htmlunknownelement)
+
+
+
+# HTMLElement
 
 https://html.spec.whatwg.org/multipage/dom.html#htmlelement
 
@@ -43,6 +48,15 @@ partial interface HTMLElement {
 };
 
 HTMLElement includes ElementCSSInlineStyle;
+```
+
+
+
+# HTMLUnknownElement
+
+```webidl
+[Exposed=Window]
+interface HTMLUnknownElement : HTMLElement {};
 ```
 
 
