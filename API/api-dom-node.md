@@ -1,4 +1,6 @@
 # Node
+: 추상 인터페이스   
+: Document, DocumentType, DocumentFragment, Element, Text, ProcessingInstruction, Comment 인터페이스에 구현
 
 https://dom.spec.whatwg.org/#interface-node
 
@@ -73,36 +75,95 @@ dictionary GetRootNodeOptions {
 nodeType    | 노드 타입을 숫자로 반환
 nodeName    | 노드 타입을 문자로 반환  
 baseURI     | 문서의 기본 url 반환
-isConnected | 노드가 연결되었는지 여부 반환  
-ownerDocument | 노드를 포함하는 문서?
-parentNode  | 노드의 부모 노드
-parentElement |
-childNodes  | 노드의 자식 노드
-firstChild  | 노드의 첫번째 자식 노드
-lastChild   | 노드의 마지막 자식 노드
-previousSibling | 노드의 형제 노드 중 바로 앞 노드
-nextSibling | 노드의 형제 노드 중 바로 뒤 노드
-nodeValue   |
-textContent |
+isConnected | 노드가 컨텍스트 객체에 연결되었는지 여부 반환  
+ownerDocument | 노드를 포함하는 최상위 문서 반환
+parentNode  | 노드의 부모 노드 반환
+parentElement | 노드의 부모 요소 반환
+childNodes  | 노드의 모든 자식 노드 반환  
+firstChild  | 노드의 첫번째 자식 노드 반환
+lastChild   | 노드의 마지막 자식 노드 반환
+previousSibling | 노드의 형제 노드 중 바로 앞에 위치한 노드 반환
+nextSibling | 노드의 형제 노드 중 바로 뒤에 위치한 노드 반환  
+nodeValue   | 노드의 값을 반환하거나 지정  
+textContent | 노드의 텍스트 노드를 반환하거나 지정  
 
 
-**getRootNode()**
+**nodeType & nodeName & nodeValue**
+
+노드 타입 | nodeType | nodeName | nodeValue
+---|---|---|---
+Element | 1  | Element.tagName | null
+Attr    | 2  | Attr.name | 속성 값
+Text    | 3  | #text  | 내용
+CDATASection | 4 | #cdata-section | 내용
+ProcessingInstruction | 7 | ProcessingInstruction.target | 내용
+Comment  | 8  | #comment | 내용
+Document | 9  | #document | null
+DocumentType  | 10 | DocumentType.name | null
+DocumentFragment | 11 | #document-fragment | null
 
 
-**hasChildNodes()**
+**nodeValue**   
+: Attr, Text, CDATASection, ProcessingInstruction, Comment 경우 해당     
+
+```html
+<p>this is <b>tag</b></p>
+
+<script>
+var p = document.getElementsByTagName('p')[0];
+
+(p.childNodes[0].nodeValue == 'this is ') == true
+(p.childNodes[1].childNodes[0].nodeValue == 'tag') == true
+</script>
+```
 
 
-**normalize()**
+**textContent**   
+
+```html
+<p>this is <b>tag</b></p>
+
+<script>
+var p = document.getElementsByTagName('p')[0];
+(p.textContent == 'this is tag') == true
+</script>
+```
+
+
+**getRootNode()**   
+: 노드의 루트 노드 반환   
+
+```js
+var root = node.getRootNode();
+
+// 옵션 설정
+// https://dom.spec.whatwg.org/#concept-shadow-including-root
+var root = node.getRootNode({ composed: true });
+```
+
+
+**hasChildNodes()**    
+: 노드에 자식 노드가 있는지 여부 반환  
+
+
+**normalize()**  
+: 주어진 노드의 하위 노드를 정규화함  
+
+- 태그 사이 공백 제거
+- 속성과 값 사이 공백 제거
+- 텍스트 노드의 줄바꿈이나 공백 제거
+- 인접한 텍스트 노드를 단일 노드로 병합
+- ...
 
 
 **cloneNode()**   
-: 해당 노드의 복제본 반환   
+: 노드의 복제본 반환   
 
 ```js
-var newNode = el.cloneNode();
+var newNode = node.cloneNode();
 
 // 자식 노드를 포함해 복제
-var newNode = el.cloneNode(true);
+var newNode = node.cloneNode(true);
 ```
 
 
@@ -139,23 +200,41 @@ el1.isSameNode(el2) === true
 ```
 
 
-**compareDocumentPosition()**
+**compareDocumentPosition()**   
+: 노드와 주어진 노드와의 관계를 비교하고 위치 값(비트 마스크) 반환   
 
 상태 | 값 |설명
 ---|---|---
-DOCUMENT_POSITION_DISCONNECTED | 1 |
-DOCUMENT_POSITION_PRECEDING  | 2 |
-DOCUMENT_POSITION_FOLLOWING  | 4 |  
-DOCUMENT_POSITION_CONTAINS   | 8 |
-DOCUMENT_POSITION_CONTAINED_BY | 16 |
-DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC | 32 |
+DOCUMENT_POSITION_DISCONNECTED | 1 | 노드가 같은 트리 내에 존재하지 않음
+DOCUMENT_POSITION_PRECEDING  | 2 | 주어진 노드가 해당 노드 앞에 존재
+DOCUMENT_POSITION_FOLLOWING  | 4 | 주어진 노드가 해당 노드 뒤에 존재
+DOCUMENT_POSITION_CONTAINS   | 8 | 주어진 노드가 해당 노드를 포함함 (부모)
+DOCUMENT_POSITION_CONTAINED_BY | 16 | 주어진 노드가 해당 노드에 포함됨 (자식)
+DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC | 32 | 구현에 따라 다름
+
+```html
+<tag id="a">
+    <tag id="b"></tag>
+</tag>
+
+<script>
+var a = document.getElementById('a');
+var b = document.getElementById('b');
+
+// DOCUMENT_POSITION_CONTAINS + DOCUMENT_POSITION_PRECEDING
+b.compareDocumentPosition(a) == 10
+
+// DOCUMENT_POSITION_CONTAINED_BY + DOCUMENT_POSITION_FOLLOWING
+a.compareDocumentPosition(b) == 20
+</script>
+```
 
 
 **contains()**  
-: 주어진 인자가 해당 노드의 하위 노드인지 여부 반환  
+: 주어진 노드가 해당 노드의 하위 노드인지 여부 반환  
 
 ```js
-var result = el.contains('node');
+var result = node.contains('node');
 ```
 
 
@@ -163,7 +242,7 @@ var result = el.contains('node');
 : 주어진 네임스페이스와 관련된 접두사 반환  
 
 ```js
-var result = el.lookupPrefix('NS');
+var result = node.lookupPrefix('NS');
 ```
 
 
@@ -171,7 +250,7 @@ var result = el.lookupPrefix('NS');
 : 주어진 접두사와 일치하는 네임스페이스 반환   
 
 ```js
-var result = el.lookupNamespaceURI('prefix');
+var result = node.lookupNamespaceURI('prefix');
 ```
 
 
@@ -179,7 +258,7 @@ var result = el.lookupNamespaceURI('prefix');
 : 주어진 네임스페이스와 일치하는지 여부 반환   
 
 ```js
-var result = el.isDefaultNamespace('NS');
+var result = node.isDefaultNamespace('NS');
 ```
 
 
