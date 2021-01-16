@@ -25,14 +25,21 @@ length | 노드 개수 반환
 **iterable**  
 
 ```js
-el.childNodes.forEach( () => {});
+node.childNodes.forEach( () => {});
 ```
 
 
-**+ Live vs Static**        
-: Live = DOM 변경 사항을 실시간으로 컬렉션에 반영        
-: Static = DOM 변경 사항을 컬렉션에 반영하지 않음   
 
+---
+**Live Collection**        
+: DOM 변경 사항을 실시간으로 컬렉션에 반영    
+
+
+**Static Collection**     
+: DOM 변경 사항을 컬렉션에 반영하지 않음   
+
+
+**Live vs Static**  
 - Node.childNodes 경우 Live NodeList를 반환    
 - Document.querySelectorAll() 경우 Static NodeList를 반환    
 
