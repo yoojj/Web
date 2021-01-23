@@ -14,6 +14,9 @@ interface Screen {
   readonly attribute unsigned long pixelDepth;
 };
 
+
+
+/* ScreenOrientation */
 partial interface Screen {
   [SameObject] readonly attribute ScreenOrientation orientation;
 };
