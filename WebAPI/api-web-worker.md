@@ -1,6 +1,7 @@
 # Web Worker API
 : 백그라운드에서 스크립트를 실행하기 위한 API    
 : 별도의 스레드에서 스크립트가 실행되어 UI 스레드를 중단시키지 않음   
+: 웹 워커는 일부 DOM 객체에 접근 불가능     
 
 https://www.w3.org/TR/workers/   
 https://html.spec.whatwg.org/multipage/workers.html  
@@ -8,40 +9,35 @@ http://trac.webkit.org/browser/webkit/trunk/Source/WebCore/workers
 
 
 **api**
-- WorkerGlobalScope
-- DedicatedWorkerGlobalScope
-- SharedWorkerGlobalScope
-- Worker
-- SharedWorker
+- [WorkerGlobalScope](#workerglobalscope)
+- [WorkerNavigator](#workernavigator)
+- [DedicatedWorkerGlobalScope](#dedicatedworkerglobalscope)
+- [SharedWorkerGlobalScope](#sharedworkerglobalscope)
+- [Worker](#woeker)
+- [SharedWorker](#sharedwoeker)
 
 
 ex.
 ```js
 var worker = new Worker('example.js', {type: 'classic'});
 
-function startWorker(){
-    worker.onmessage = (e) => {
-        console.log(e.data);
-    }     
-}
-
-function stopWorker(){
-    if(worker.terminate()){
-        worker = null;
-    }
-}
+worker.onmessage = (e) => {
+    console.log(e.data);
+}     
 
 
 // example.js
-self.onmessage = (e) => {
-    console.log(e.data);
-    self.postMessage('send data to main');
-}
+postMessage('send data to main');
 ```
 
 
 
 ## WorkerGlobalScope
+: WindowOrWorkerGlobalScope 구현
+
+WindowOrWorkerGlobalScope      
+https://github.com/yoojj/Web/blob/master/WebAPI/api-window.md#windoworworkerglobalscope
+
 
 ```webidl
 [Exposed=Worker]
@@ -59,6 +55,7 @@ interface WorkerGlobalScope : EventTarget {
   attribute EventHandler onunhandledrejection;
 };
 
+
 interface WorkerLocation {
   stringifier readonly attribute USVString href;
   readonly attribute USVString origin;
@@ -70,16 +67,6 @@ interface WorkerLocation {
   readonly attribute USVString search;
   readonly attribute USVString hash;
 };
-
-interface WorkerNavigator {};
-WorkerNavigator includes NavigatorID;
-WorkerNavigator includes NavigatorLanguage;
-WorkerNavigator includes NavigatorOnLine;
-WorkerNavigator includes NavigatorConcurrentHardware;
-
-interface mixin NavigatorConcurrentHardware {
-  readonly attribute unsigned long long hardwareConcurrency;
-};
 ```
 
 
@@ -89,6 +76,37 @@ interface mixin NavigatorConcurrentHardware {
 ```js
 self.importScripts('example.js');
 ```
+
+
+
+## WorkerNavigator
+
+```webidl
+interface WorkerNavigator {};
+
+WorkerNavigator includes NavigatorID;
+WorkerNavigator includes NavigatorLanguage;
+WorkerNavigator includes NavigatorOnLine;
+WorkerNavigator includes NavigatorConcurrentHardware;
+```
+
+
+Navigator   
+https://github.com/yoojj/Web/blob/master/WebAPI/api-window-navigator.md
+
+
+
+### partial interface
+
+```webidl
+[Exposed=(Worker)]
+partial interface WorkerNavigator {
+  [SameObject] readonly attribute Permissions permissions;
+};
+```
+
+Permission API   
+https://github.com/yoojj/Web/blob/master/WebAPI/api-permission.md
 
 
 
@@ -154,6 +172,7 @@ dictionary WorkerOptions {
 enum WorkerType { "classic", "module" };
 
 Worker includes AbstractWorker;
+
 
 interface mixin AbstractWorker {
   attribute EventHandler onerror;
