@@ -29,20 +29,29 @@ Navigator includes NavigatorConcurrentHardware;
 
 
 
-### partial interface
+## partial interface
 
 ```webidl
 partial interface Navigator {
   [SecureContext] Promise<undefined> share(optional ShareData data = {});
 };
+
+
+[Exposed=(Window)]
+partial interface Navigator {
+  [SameObject] readonly attribute Permissions permissions;
+};
 ```
 
-Web Share API   
+Web Share API    
 https://github.com/yoojj/Web/blob/master/WebAPI/api-web-share.md
 
+Permission API  
+https://github.com/yoojj/Web/blob/master/WebAPI/api-permission.md
 
 
-## NavigatorID
+
+# NavigatorID
 
 ```webidl
 interface mixin NavigatorID {
@@ -86,7 +95,7 @@ vendorSub    | 벤더사 빌드 번호 반환
 
 
 
-## NavigatorLanguage
+# NavigatorLanguage
 
 ```webidl
 interface mixin NavigatorLanguage {
@@ -102,7 +111,7 @@ languages    | 선호하는 언어 목록 반환
 
 
 
-## NavigatorOnLine
+# NavigatorOnLine
 
 ```webidl
 interface mixin NavigatorOnLine {
@@ -116,7 +125,7 @@ interface mixin NavigatorOnLine {
 
 
 
-## NavigatorContentUtils
+# NavigatorContentUtils
 
 ```webidl
 interface mixin NavigatorContentUtils {
@@ -143,7 +152,7 @@ https://html.spec.whatwg.org/multipage/system-state.html#safelisted-scheme
 
 
 
-## NavigatorCookies
+# NavigatorCookies
 
 ```webidl
 interface mixin NavigatorCookies {
@@ -156,7 +165,7 @@ interface mixin NavigatorCookies {
 
 
 
-## NavigatorPlugins
+# NavigatorPlugins
 
 ```webidl
 interface mixin NavigatorPlugins {
@@ -218,7 +227,7 @@ interface MimeType {
 
 
 
-## NavigatorConcurrentHardware
+# NavigatorConcurrentHardware
 
 ```webidl
 interface mixin NavigatorConcurrentHardware {
