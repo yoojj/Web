@@ -18,7 +18,6 @@ property : DOM, 동적
 - 선택적 속성
 
 ex.
-
 ```html
 <!-- 필수 속성 -->
 <img src="">
@@ -39,7 +38,7 @@ ex.
 https://html.spec.whatwg.org/multipage/dom.html#global-attributes
 
 전역 속성 | 설명
----|---
+---|---   
 accesskey        | 요소에 접근 가능한 키보드 단축키 지정
 autocapitalize   | 텍스트 입력이나 편집시 대소문자 변환 여부 지정  
 autofocus        | 웹 문서 로드시 포커스되어야 하는 요소에 지정 (불리언 속성)     
@@ -47,21 +46,21 @@ contenteditable  | 요소의 콘텐츠 편집 여부 지정
 dir              | 요소의 텍스트 방향 지정
 draggable        | 요소의 드래그 여부 지정
 enterkeyhint     | 가상 키보드의 엔터키에 액션에 대한 힌트나 아이콘 지정
-hidden           | 요소를 숨기며 렌더링 하지 않음 -- 불리언 속성
+hidden           | 요소를 숨기며 렌더링 하지 않음 (불리언 속성)
 inputmode        | 가상 키보드 선택을 위한 힌트 지정     
 is               | 요소가 사용자 정의 요소처럼 동작하도록 지정
 itemid           | 아이템 식별자
 itemprop         | 아이템 항목에 속성 추가
-itemref          | 마이크로데이터 - 특성 지정  
-itemscope        | 마이크로데이터 - 범위-컨테이너 요소 지정 (불리언 속성)
-itemtype         | 마이크로데이터 - 어휘 지정
+itemref          | 마이크로데이터 : 특성 지정  
+itemscope        | 마이크로데이터 : 범위-컨테이너 요소 지정 (불리언 속성)
+itemtype         | 마이크로데이터 : 어휘 지정
 lang             | 요소의 언어 명시
 nonce            | 콘텐츠 보안 정책을 위해 한 번만 사용하는 임시 값 지정  
 spellcheck       | 철자-문법 검사 여부 지정
-style            | 해당 요소의 인라인 스타일 지정
+style            | 요소의 인라인 스타일 지정
 tabindex         | 탭키 사용시 요소들이 포커스되는 순서 지정
 title            | 요소에 대해 추가 정보 지정
-translate        | 요소의 일부 속성과 텍스트 콘텐츠의 번역 여부 지정
+translate        | 요소의 (일부) 속성과 텍스트 콘텐츠 번역 여부 지정
 
 
 ```html
@@ -86,7 +85,7 @@ translate        | 요소의 일부 속성과 텍스트 콘텐츠의 번역 여�
 
 
 <tag autofocus></tag>
-<!-- 하나의 웹 문서에사 한 번만 적용 가능 -->
+<!-- 하나의 웹 문서에 한 번만 적용 -->
 
 
 <tag contenteditable="true | false"></tag>
@@ -94,11 +93,11 @@ translate        | 요소의 일부 속성과 텍스트 콘텐츠의 번역 여�
 
 <tag dir="ltr | rtl | auto"></tag>
 <!--
-: 전역 사용을 위해 html, 태그에서 명시  
+: 전역 사용을 위해서는 html 태그에서 명시  
 
 - ltr : left to right
 - rtl : right to left
-- auto : 브라우저가 설정에 따라 선택  
+- auto : 브라우저 설정에 따름
 -->
 
 
@@ -131,8 +130,8 @@ customElements.define('test-is', TestIs, { extends: 'tag' });
 <tag lang="ko">
 <tag lang="ko-KR">
 <!--
-: 검색 엔진, 텍스트 리더기, 번역기 등을 위해 문서에 쓰인 언어 명시
-: 전역 사용을 위해 html, 태그에서 명시  
+: 검색 엔진, 텍스트 리더기, 번역기 등을 위해 문서에 쓰인 대표적인 언어 명시
+: 전역 사용을 위해서는 html 태그에서 명시  
 
 ko : 언어 코드 지정
 ko-KR : 언어 코드 + 국가 코드 지정
@@ -164,7 +163,7 @@ https://www.sitepoint.com/iso-2-letter-language-codes/
 ### 글로벌 이벤트
 
 **GlobalEventHandlers**    
-https://github.com/yoojj/Web/blob/master/WebAPI/api-event.md#globaleventhandlers
+https://github.com/yoojj/Web/blob/master/DOM/api-html/api-html-events.md#globaleventhandlers
 
 - onabort
 - onauxclick
@@ -238,7 +237,7 @@ https://github.com/yoojj/Web/blob/master/WebAPI/api-event.md#globaleventhandlers
 ### 윈도우 이벤트
 
 **WindowEventHandlers**   
-https://github.com/yoojj/Web/blob/master/WebAPI/api-event.md#windoweventhandlers
+https://github.com/yoojj/Web/blob/master/DOM/api-html/api-html-events.md#windoweventhandlers
 
 - onafterprint
 - onbeforeprint
@@ -284,8 +283,8 @@ window.onunhandledrejection = e => {
 
 ### 클립 보드 이벤트
 
-**DocumentAndElementEventHandlers**   
-https://github.com/yoojj/Web/blob/master/WebAPI/api-event.md#documentandelementeventhandlers
+**DocumentAndElementEventHandlers**    
+https://github.com/yoojj/Web/blob/master/DOM/api-html/api-html-events.md#documentandelementeventhandlers
 
 - oncopy   
 - oncut
@@ -342,6 +341,7 @@ truespeed   |
 <style>
 :read-only {}
 </style>
+
 <tag readonly></tag>
 <!--
 : readonly 속성을 지정한 경우 유효성 검사를 하지 않음
@@ -354,6 +354,7 @@ truespeed   |
 :valid {}
 :invalid {}
 </style>
+
 <tag required aria-required="true"></tag>
 <!-- input의 hidden, button, range, color 타입일 경우 적용 불가 -->
 ```
