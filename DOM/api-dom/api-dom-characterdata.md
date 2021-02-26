@@ -81,7 +81,7 @@ tag.firstChild.insertData(0, 'data');
 <script>
 var tag = document.getElementsByTagName('tag')[0];
 
-tag.firstChild.insertData(0, 3, 'data');
+tag.firstChild.replaceData(0, 3, 'data');
 (tag.data === 'data') == true
 </script>
 ```
