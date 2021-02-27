@@ -1,13 +1,12 @@
 # NodeList
-: 노드 목록  
 
-- Node.childNodes : Live NodeList를 반환   
-- Document.querySelectorAll() : Static NodeList를 반환  
+- Node.childNodes : Live NodeList 반환   
+- Document.querySelectorAll() : Static NodeList 반환  
 
 
 **Live vs Static**    
-: Live Collection = DOM 변경 사항을 실시간으로 컬렉션에 반영   
-: Static Collection = DOM 변경 사항을 컬렉션에 반영하지 않음    
+- Live Collection : DOM 변경 사항을 실시간으로 컬렉션에 반영   
+- Static Collection : DOM 변경 사항을 컬렉션에 반영하지 않음    
 
 
 https://dom.spec.whatwg.org/#interface-nodelist
