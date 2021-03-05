@@ -33,6 +33,11 @@ Navigator includes NavigatorConcurrentHardware;
 
 ```webidl
 partial interface Navigator {
+  [SameObject] readonly attribute Geolocation geolocation;
+};
+
+
+partial interface Navigator {
   [SecureContext] Promise<undefined> share(optional ShareData data = {});
 };
 
@@ -41,13 +46,24 @@ partial interface Navigator {
 partial interface Navigator {
   [SameObject] readonly attribute Permissions permissions;
 };
+
+
+partial interface Navigator {
+  [SecureContext, SameObject] readonly attribute Clipboard clipboard;
+};
 ```
+
+Geolocation API   
+https://github.com/yoojj/Web/blob/master/WebAPI/api-geolocation.md  
 
 Web Share API    
 https://github.com/yoojj/Web/blob/master/WebAPI/api-web-share.md
 
 Permission API  
 https://github.com/yoojj/Web/blob/master/WebAPI/api-permission.md
+
+Clipboard API    
+https://github.com/yoojj/Web/blob/master/WebAPI/api-clipboard.md
 
 
 
